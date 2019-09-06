@@ -40,7 +40,7 @@
 namespace ProjectInfo
 {
     const char* const  projectName    = "MyDelayPlugin";
-    const char* const  companyName    = "";
+    const char* const  companyName    = "Silver";
     const char* const  versionString  = "1.0.0";
     const int          versionNumber  = 0x10000;
 }

@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="N7FUb8" name="MyDelayPlugin" projectType="audioplug" jucerVersion="5.4.4">
+<JUCERPROJECT id="N7FUb8" name="MyDelayPlugin" projectType="audioplug" jucerVersion="5.4.4"
+              companyName="Silver">
   <MAINGROUP id="kmOuzh" name="MyDelayPlugin">
+    <GROUP id="{40EF90BF-7055-5FC5-235F-8B7BB94EDA40}" name="Managers">
+      <FILE id="APfvYD" name="Preset_Manager.cpp" compile="1" resource="0"
+            file="Source/Preset_Manager.cpp"/>
+      <FILE id="a4h6Iy" name="Preset_Manager.h" compile="0" resource="0"
+            file="Source/Preset_Manager.h"/>
+    </GROUP>
+    <GROUP id="{A1A7839D-2B41-876B-DC2A-841D4859FA50}" name="Helpers"/>
+    <GROUP id="{C2F5F5D6-DF9C-DF8C-6B49-210E798C8548}" name="UI">
+      <GROUP id="{1C0FCBCF-ECC3-8046-BC98-6CC8FBFFF532}" name="Components">
+        <FILE id="H1wfXE" name="Slider.cpp" compile="1" resource="0" file="Source/Slider.cpp"/>
+        <FILE id="D62z9K" name="Slider.h" compile="0" resource="0" file="Source/Slider.h"/>
+        <FILE id="bq6JeI" name="VU_Meter.cpp" compile="1" resource="0" file="Source/VU_Meter.cpp"/>
+        <FILE id="ycPUBs" name="VU_Meter.h" compile="0" resource="0" file="Source/VU_Meter.h"/>
+      </GROUP>
+      <FILE id="WZovns" name="Gain_Panel.cpp" compile="1" resource="0" file="Source/Gain_Panel.cpp"/>
+      <FILE id="FvzB23" name="Gain_Panel.h" compile="0" resource="0" file="Source/Gain_Panel.h"/>
+      <FILE id="Jt8xMg" name="Main_Panel.cpp" compile="1" resource="0" file="Source/Main_Panel.cpp"/>
+      <FILE id="kVI9iY" name="Main_Panel.h" compile="0" resource="0" file="Source/Main_Panel.h"/>
+      <FILE id="mMoPVh" name="Panel_Base.cpp" compile="1" resource="0" file="Source/Panel_Base.cpp"/>
+      <FILE id="oFYUpP" name="Panel_Base.h" compile="0" resource="0" file="Source/Panel_Base.h"/>
+    </GROUP>
+    <GROUP id="{3811E8EB-9659-219F-421B-2C17D8FCB2C6}" name="DSP">
+      <FILE id="SbzI5z" name="Delay.cpp" compile="1" resource="0" file="Source/Delay.cpp"/>
+      <FILE id="R8BbaZ" name="Delay.h" compile="0" resource="0" file="Source/Delay.h"/>
+      <FILE id="GE3XCS" name="Gain.cpp" compile="1" resource="0" file="Source/Gain.cpp"/>
+      <FILE id="YH6kFP" name="Gain.h" compile="0" resource="0" file="Source/Gain.h"/>
+    </GROUP>
     <GROUP id="{A4E61859-6F81-DA92-730A-D36A88BBAE9A}" name="Source">
       <FILE id="e23ob7" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>

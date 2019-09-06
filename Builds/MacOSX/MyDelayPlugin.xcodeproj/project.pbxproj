@@ -77,6 +77,38 @@
 			isa = PBXBuildFile;
 			fileRef = 4C3E82F389DFBFB00C2F42FE;
 		};
+		3F6C552091C84019AA1D6271 = {
+			isa = PBXBuildFile;
+			fileRef = 90509626E970659DB06FA50F;
+		};
+		184D9AB68D2D5ECDD531B9F1 = {
+			isa = PBXBuildFile;
+			fileRef = 30464CFD99F68FB99F592392;
+		};
+		1DCC57BE8AEF47C5EE4E939B = {
+			isa = PBXBuildFile;
+			fileRef = 345A64858C33F2FBD8AC335B;
+		};
+		3892463F71D667F3FD3EE967 = {
+			isa = PBXBuildFile;
+			fileRef = 92A5DF4D8FCA5026268ABBA4;
+		};
+		752423C4C97271850ACD7429 = {
+			isa = PBXBuildFile;
+			fileRef = 24508B4FBBF9CE8134433AB2;
+		};
+		3B3D84636BB3D9053DC2B479 = {
+			isa = PBXBuildFile;
+			fileRef = 0CB92DF1C9581CDB50036E06;
+		};
+		C40A769D514854FA5B9376FB = {
+			isa = PBXBuildFile;
+			fileRef = BEA9766C10493D19355DF792;
+		};
+		6A555F4B57CBCE0964345E56 = {
+			isa = PBXBuildFile;
+			fileRef = ADEA7CE297207E30B5C7D49C;
+		};
 		052BDC2BEA1ECBEC3B91095B = {
 			isa = PBXBuildFile;
 			fileRef = 95EB9CD3ABE8742ABC25368B;
@@ -179,6 +211,20 @@
 			path = "/Users/silver/Documents/JUCE/modules/juce_audio_plugin_client";
 			sourceTree = "<absolute>";
 		};
+		0CB92DF1C9581CDB50036E06 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = "Panel_Base.cpp";
+			path = "../../Source/Panel_Base.cpp";
+			sourceTree = "SOURCE_ROOT";
+		};
+		11B12E35D20675821FF33CD8 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = "Main_Panel.h";
+			path = "../../Source/Main_Panel.h";
+			sourceTree = "SOURCE_ROOT";
+		};
 		1235A1AA992F09F29C098965 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
@@ -214,6 +260,13 @@
 			path = "Info-VST3.plist";
 			sourceTree = "SOURCE_ROOT";
 		};
+		1EC6A9543AE6FB0FEB05D6CA = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = Delay.h;
+			path = ../../Source/Delay.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		219D157D0F2794D59FE9FD67 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
@@ -228,11 +281,32 @@
 			path = MyDelayPlugin.vst3;
 			sourceTree = "BUILT_PRODUCTS_DIR";
 		};
+		24508B4FBBF9CE8134433AB2 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = "Main_Panel.cpp";
+			path = "../../Source/Main_Panel.cpp";
+			sourceTree = "SOURCE_ROOT";
+		};
+		30464CFD99F68FB99F592392 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = Slider.cpp;
+			path = ../../Source/Slider.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
 		328B00E0C1259A0B1046E790 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.objcpp;
 			name = "include_juce_audio_plugin_client_VST_utils.mm";
 			path = "../../JuceLibraryCode/include_juce_audio_plugin_client_VST_utils.mm";
+			sourceTree = "SOURCE_ROOT";
+		};
+		345A64858C33F2FBD8AC335B = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = "VU_Meter.cpp";
+			path = "../../Source/VU_Meter.cpp";
 			sourceTree = "SOURCE_ROOT";
 		};
 		375233A329AF37F0D3A78726 = {
@@ -289,6 +363,13 @@
 			lastKnownFileType = sourcecode.cpp.objcpp;
 			name = "include_juce_opengl.mm";
 			path = "../../JuceLibraryCode/include_juce_opengl.mm";
+			sourceTree = "SOURCE_ROOT";
+		};
+		514C43753448CFCCF1547755 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = "Gain_Panel.h";
+			path = "../../Source/Gain_Panel.h";
 			sourceTree = "SOURCE_ROOT";
 		};
 		53B81009A5555D44DE635151 = {
@@ -361,6 +442,13 @@
 			path = "../../JuceLibraryCode/include_juce_core.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
+		7EFB156F0F03ACB2F6B22D54 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = Slider.h;
+			path = ../../Source/Slider.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		83092943C63A30D610D79640 = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.framework;
@@ -403,12 +491,26 @@
 			path = MyDelayPlugin.entitlements;
 			sourceTree = "SOURCE_ROOT";
 		};
+		90509626E970659DB06FA50F = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = "Preset_Manager.cpp";
+			path = "../../Source/Preset_Manager.cpp";
+			sourceTree = "SOURCE_ROOT";
+		};
 		92970E7A8FC0C1EF1298BC4E = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.framework;
 			name = Carbon.framework;
 			path = System/Library/Frameworks/Carbon.framework;
 			sourceTree = SDKROOT;
+		};
+		92A5DF4D8FCA5026268ABBA4 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = "Gain_Panel.cpp";
+			path = "../../Source/Gain_Panel.cpp";
+			sourceTree = "SOURCE_ROOT";
 		};
 		95EB9CD3ABE8742ABC25368B = {
 			isa = PBXFileReference;
@@ -459,6 +561,13 @@
 			path = System/Library/Frameworks/WebKit.framework;
 			sourceTree = SDKROOT;
 		};
+		ADEA7CE297207E30B5C7D49C = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = Gain.cpp;
+			path = ../../Source/Gain.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
 		ADEBF557983CD01ED1E5F33F = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
@@ -472,6 +581,13 @@
 			name = "juce_events";
 			path = "/Users/silver/Documents/JUCE/modules/juce_events";
 			sourceTree = "<absolute>";
+		};
+		B2EA2E91EF86C5B1B99C4C40 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = "Preset_Manager.h";
+			path = "../../Source/Preset_Manager.h";
+			sourceTree = "SOURCE_ROOT";
 		};
 		B661B97A69CD8C4844905D50 = {
 			isa = PBXFileReference;
@@ -501,6 +617,20 @@
 			path = "../../JuceLibraryCode/include_juce_audio_plugin_client_Standalone.cpp";
 			sourceTree = "SOURCE_ROOT";
 		};
+		BEA9766C10493D19355DF792 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = Delay.cpp;
+			path = ../../Source/Delay.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
+		BEAF26EFCE3242A7FE18B25C = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = Gain.h;
+			path = ../../Source/Gain.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		C35EF3AF03DD54531DC05A82 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.objcpp;
@@ -521,6 +651,13 @@
 			name = "juce_audio_processors";
 			path = "/Users/silver/Documents/JUCE/modules/juce_audio_processors";
 			sourceTree = "<absolute>";
+		};
+		D3175EDEE6D1190CF7FC70AE = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = "VU_Meter.h";
+			path = "../../Source/VU_Meter.h";
+			sourceTree = "SOURCE_ROOT";
 		};
 		D41912BAE86FCAFD5C30CCFE = {
 			isa = PBXFileReference;
@@ -564,13 +701,6 @@
 			path = System/Library/Frameworks/Accelerate.framework;
 			sourceTree = SDKROOT;
 		};
-		E09F9C5228329CF2B02CA216 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.cpp;
-			name = PluginEditor.cpp;
-			path = ../../Source/PluginEditor.cpp;
-			sourceTree = "SOURCE_ROOT";
-		};
 		E6084895EDEFB0341D5FE575 = {
 			isa = PBXFileReference;
 			explicitFileType = wrapper.application;
@@ -584,6 +714,20 @@
 			includeInIndex = 0;
 			path = libMyDelayPlugin.a;
 			sourceTree = "BUILT_PRODUCTS_DIR";
+		};
+		E09F9C5228329CF2B02CA216 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = PluginEditor.cpp;
+			path = ../../Source/PluginEditor.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
+		F297D13C76C549A7D34ADA65 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = "Panel_Base.h";
+			path = "../../Source/Panel_Base.h";
+			sourceTree = "SOURCE_ROOT";
 		};
 		F67B021598FE3A397528535A = {
 			isa = PBXFileReference;
@@ -599,6 +743,51 @@
 			path = System/Library/Frameworks/Cocoa.framework;
 			sourceTree = SDKROOT;
 		};
+		B87B1D329E5439B8B5F5E21B = {
+			isa = PBXGroup;
+			children = (
+				90509626E970659DB06FA50F,
+				B2EA2E91EF86C5B1B99C4C40,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		D3A405432D48AA48061C4628 = {
+			isa = PBXGroup;
+			children = (
+				30464CFD99F68FB99F592392,
+				7EFB156F0F03ACB2F6B22D54,
+				345A64858C33F2FBD8AC335B,
+				D3175EDEE6D1190CF7FC70AE,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		211F4F4AA790818B9DC9D263 = {
+			isa = PBXGroup;
+			children = (
+				D3A405432D48AA48061C4628,
+				92A5DF4D8FCA5026268ABBA4,
+				514C43753448CFCCF1547755,
+				24508B4FBBF9CE8134433AB2,
+				11B12E35D20675821FF33CD8,
+				0CB92DF1C9581CDB50036E06,
+				F297D13C76C549A7D34ADA65,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		E18533BF1B9D730E40F0B6D6 = {
+			isa = PBXGroup;
+			children = (
+				BEA9766C10493D19355DF792,
+				1EC6A9543AE6FB0FEB05D6CA,
+				ADEA7CE297207E30B5C7D49C,
+				BEAF26EFCE3242A7FE18B25C,
+			);
+			name = DSP;
+			sourceTree = "<group>";
+		};
 		758AB53B28648041F9985414 = {
 			isa = PBXGroup;
 			children = (
@@ -613,6 +802,9 @@
 		475B06C494A2EBD2F575F2EB = {
 			isa = PBXGroup;
 			children = (
+				B87B1D329E5439B8B5F5E21B,
+				211F4F4AA790818B9DC9D263,
+				E18533BF1B9D730E40F0B6D6,
 				758AB53B28648041F9985414,
 			);
 			name = MyDelayPlugin;
@@ -781,7 +973,7 @@
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_LDFLAGS = "-bundle -lMyDelayPlugin";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MyDelayPlugin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Silver.MyDelayPlugin;
 				PRODUCT_NAME = "MyDelayPlugin";
 				USE_HEADERMAP = NO;
 				WRAPPER_EXTENSION = vst3;
@@ -833,7 +1025,7 @@
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_LDFLAGS = "-bundle -lMyDelayPlugin";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MyDelayPlugin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Silver.MyDelayPlugin;
 				PRODUCT_NAME = "MyDelayPlugin";
 				USE_HEADERMAP = NO;
 				WRAPPER_EXTENSION = vst3;
@@ -884,7 +1076,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_LDFLAGS = "-bundle -lMyDelayPlugin";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MyDelayPlugin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Silver.MyDelayPlugin;
 				PRODUCT_NAME = "MyDelayPlugin";
 				USE_HEADERMAP = NO;
 				WRAPPER_EXTENSION = component;
@@ -937,7 +1129,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_LDFLAGS = "-bundle -lMyDelayPlugin";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MyDelayPlugin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Silver.MyDelayPlugin;
 				PRODUCT_NAME = "MyDelayPlugin";
 				USE_HEADERMAP = NO;
 				WRAPPER_EXTENSION = component;
@@ -982,7 +1174,7 @@
 				INFOPLIST_PREPROCESS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_LDFLAGS = "-lMyDelayPlugin";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MyDelayPlugin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Silver.MyDelayPlugin;
 				PRODUCT_NAME = "MyDelayPlugin";
 				USE_HEADERMAP = NO;
 			};
@@ -1028,7 +1220,7 @@
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_LDFLAGS = "-lMyDelayPlugin";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MyDelayPlugin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Silver.MyDelayPlugin;
 				PRODUCT_NAME = "MyDelayPlugin";
 				USE_HEADERMAP = NO;
 			};
@@ -1071,7 +1263,7 @@
 				);
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MyDelayPlugin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Silver.MyDelayPlugin;
 				PRODUCT_NAME = "MyDelayPlugin";
 				SKIP_INSTALL = YES;
 				USE_HEADERMAP = NO;
@@ -1117,7 +1309,7 @@
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MyDelayPlugin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Silver.MyDelayPlugin;
 				PRODUCT_NAME = "MyDelayPlugin";
 				SKIP_INSTALL = YES;
 				USE_HEADERMAP = NO;
@@ -1469,6 +1661,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F6C552091C84019AA1D6271,
+				184D9AB68D2D5ECDD531B9F1,
+				1DCC57BE8AEF47C5EE4E939B,
+				3892463F71D667F3FD3EE967,
+				752423C4C97271850ACD7429,
+				3B3D84636BB3D9053DC2B479,
+				C40A769D514854FA5B9376FB,
+				6A555F4B57CBCE0964345E56,
 				052BDC2BEA1ECBEC3B91095B,
 				2B0D76B439BE545EE5DC2183,
 				973BE3CCF0980D77D3200D7F,
@@ -1505,7 +1705,7 @@
 		78E1C59EB39652857138029D = {
 			isa = PBXProject;
 			buildConfigurationList = 5A35C0061844ECB1E1C2AD60;
-			attributes = { LastUpgradeCheck = 1100; ORGANIZATIONNAME = ""; TargetAttributes = { A412DCB7B83B99BD245F10FA = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };DE3B51E5C4EB0225EB6B728B = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };2E006F26AFA7F8A6C4B708DE = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };5FDB207F079EF2F12ADD25B4 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };5B8A0373787C6C75668294EF = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; }; }; };
+			attributes = { LastUpgradeCheck = 1100; ORGANIZATIONNAME = "Silver"; TargetAttributes = { A412DCB7B83B99BD245F10FA = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };DE3B51E5C4EB0225EB6B728B = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };2E006F26AFA7F8A6C4B708DE = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };5FDB207F079EF2F12ADD25B4 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };5B8A0373787C6C75668294EF = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; }; }; };
 			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 0;
 			mainGroup = CE6BB3E1F5C5ED6308113716;
