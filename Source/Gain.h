@@ -9,3 +9,19 @@
 */
 
 #pragma once
+
+class Gain
+{
+public:
+    Gain();
+    ~Gain();
+    
+    void process(float* inChannel,
+                 float inGain,
+                 float* outChannel,
+                 int sampleNumToRender);
+    
+    
+private:
+    float mOutputSmoothed;
+};
