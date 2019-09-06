@@ -9,7 +9,9 @@
       <FILE id="a4h6Iy" name="Preset_Manager.h" compile="0" resource="0"
             file="Source/Preset_Manager.h"/>
     </GROUP>
-    <GROUP id="{A1A7839D-2B41-876B-DC2A-841D4859FA50}" name="Helpers"/>
+    <GROUP id="{A1A7839D-2B41-876B-DC2A-841D4859FA50}" name="Helpers">
+      <FILE id="GGk9GI" name="AudioHelpers.h" compile="0" resource="0" file="Source/AudioHelpers.h"/>
+    </GROUP>
     <GROUP id="{C2F5F5D6-DF9C-DF8C-6B49-210E798C8548}" name="UI">
       <GROUP id="{1C0FCBCF-ECC3-8046-BC98-6CC8FBFFF532}" name="Components">
         <FILE id="H1wfXE" name="Slider.cpp" compile="1" resource="0" file="Source/Slider.cpp"/>

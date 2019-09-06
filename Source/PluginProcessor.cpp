@@ -24,6 +24,7 @@ MyDelayPluginAudioProcessor::MyDelayPluginAudioProcessor()
                        )
 #endif
 {
+    initialization();
 }
 
 MyDelayPluginAudioProcessor::~MyDelayPluginAudioProcessor()
@@ -95,14 +96,19 @@ void MyDelayPluginAudioProcessor::changeProgramName (int index, const String& ne
 //==============================================================================
 void MyDelayPluginAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    // Use this method as the place to do any pre-playback
-    // initialisation that you need..
+    for (int i = 0; i < 2; i++) {
+        mDelay[i]->setSampleRate(sampleRate);
+        mDelay[i]->reset();
+    }
 }
 
 void MyDelayPluginAudioProcessor::releaseResources()
 {
     // When playback stops, you can use this as an opportunity to free up any
     // spare memory, etc.
+    for (int i = 0; i < 2; i++) {
+        mDelay[i]->reset();
+    }
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
@@ -153,8 +159,24 @@ void MyDelayPluginAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
         auto* channelData = buffer.getWritePointer (channel);
+        
+        mInputGain[channel]->process(channelData,
+                                     0.5f,
+                                     channelData,
+                                     buffer.getNumSamples());
+        
+        mDelay[channel]->process(channelData,
+                                 0.5f,
+                                 0.2f, // feedback
+                                 0.5f,
+                                 channelData,
+                                 buffer.getNumSamples());
+        
+        mOutputGain[channel]->process(channelData,
+                                     0.5f,
+                                     channelData,
+                                     buffer.getNumSamples());
 
-        // ..do something to the data...
     }
 }
 
@@ -181,6 +203,15 @@ void MyDelayPluginAudioProcessor::setStateInformation (const void* data, int siz
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
+}
+
+void MyDelayPluginAudioProcessor::initialization()
+{
+    for (int i = 0; i < 2; i++) {
+        mInputGain[i].reset(new Gain());
+        mOutputGain[i].reset(new Gain());
+        mDelay[i].reset(new Delay());
+    }
 }
 
 //==============================================================================

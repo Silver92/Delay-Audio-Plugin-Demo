@@ -11,6 +11,8 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "Gain.h"
+#include "Delay.h"
 
 //==============================================================================
 /**
@@ -56,6 +58,13 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
 
 private:
+    
+    void initialization();
+    
+    std::unique_ptr<Gain> mInputGain[2];
+    std::unique_ptr<Gain> mOutputGain[2];
+    std::unique_ptr<Delay> mDelay[2];
+    
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MyDelayPluginAudioProcessor)
 };

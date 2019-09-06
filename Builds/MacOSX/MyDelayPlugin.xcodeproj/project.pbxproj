@@ -533,6 +533,13 @@
 			path = "../../JuceLibraryCode/include_juce_audio_plugin_client_utils.cpp";
 			sourceTree = "SOURCE_ROOT";
 		};
+		9F86C6044B404819BDC1E259 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = AudioHelpers.h;
+			path = ../../Source/AudioHelpers.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		A1045E900DE3CEEBC073F5A4 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
@@ -752,6 +759,14 @@
 			name = Managers;
 			sourceTree = "<group>";
 		};
+		6F080664B8109224F23C25BB = {
+			isa = PBXGroup;
+			children = (
+				9F86C6044B404819BDC1E259,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		D3A405432D48AA48061C4628 = {
 			isa = PBXGroup;
 			children = (
@@ -803,6 +818,7 @@
 			isa = PBXGroup;
 			children = (
 				B87B1D329E5439B8B5F5E21B,
+				6F080664B8109224F23C25BB,
 				211F4F4AA790818B9DC9D263,
 				E18533BF1B9D730E40F0B6D6,
 				758AB53B28648041F9985414,
