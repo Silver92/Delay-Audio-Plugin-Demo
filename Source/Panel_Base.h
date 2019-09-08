@@ -9,3 +9,20 @@
 */
 
 #pragma once
+
+#include "PluginProcessor.h"
+#include "UIDemensions.h"
+
+class PanelBase
+:   public Component
+{
+public:
+    PanelBase(MyDelayPluginAudioProcessor* inProcessor);
+    ~PanelBase();
+    
+    void paint (Graphics& g) override;
+    
+protected:
+    
+    MyDelayPluginAudioProcessor* mProcessor;
+};

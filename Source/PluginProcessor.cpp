@@ -96,9 +96,8 @@ void MyDelayPluginAudioProcessor::changeProgramName (int index, const String& ne
 //==============================================================================
 void MyDelayPluginAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < inputChannels; i++) {
         mDelay[i]->setSampleRate(sampleRate);
-        mDelay[i]->reset();
     }
 }
 
@@ -106,7 +105,7 @@ void MyDelayPluginAudioProcessor::releaseResources()
 {
     // When playback stops, you can use this as an opportunity to free up any
     // spare memory, etc.
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < inputChannels; i++) {
         mDelay[i]->reset();
     }
 }
@@ -156,6 +155,7 @@ void MyDelayPluginAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
     // the samples and the outer loop is handling the channels.
     // Alternatively, you can process the samples with the channels
     // interleaved by keeping the same state.
+    
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
         auto* channelData = buffer.getWritePointer (channel);
@@ -207,7 +207,7 @@ void MyDelayPluginAudioProcessor::setStateInformation (const void* data, int siz
 
 void MyDelayPluginAudioProcessor::initialization()
 {
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < inputChannels; i++) {
         mInputGain[i].reset(new Gain());
         mOutputGain[i].reset(new Gain());
         mDelay[i].reset(new Delay());

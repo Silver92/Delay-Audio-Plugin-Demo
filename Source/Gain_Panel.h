@@ -9,3 +9,19 @@
 */
 
 #pragma once
+
+#include "Panel_Base.h"
+
+class GainPanel
+:   public PanelBase
+{
+public:
+    GainPanel(MyDelayPluginAudioProcessor* inProcessor);
+    ~GainPanel();
+    
+    void paint(Graphics& g) override;
+    
+private:
+    
+private:
+};

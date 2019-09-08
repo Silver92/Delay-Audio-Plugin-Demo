@@ -65,6 +65,8 @@ private:
     std::unique_ptr<Gain> mOutputGain[2];
     std::unique_ptr<Delay> mDelay[2];
     
+    int inputChannels = getTotalNumInputChannels();
+    
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MyDelayPluginAudioProcessor)
 };

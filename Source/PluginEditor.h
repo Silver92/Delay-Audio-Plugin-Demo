@@ -13,6 +13,8 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "PluginProcessor.h"
 
+#include "Main_Panel.h"
+
 //==============================================================================
 /**
 */
@@ -30,6 +32,8 @@ private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     MyDelayPluginAudioProcessor& processor;
+    
+    std::unique_ptr<MainPanel> mMainPanel;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MyDelayPluginAudioProcessorEditor)
 };

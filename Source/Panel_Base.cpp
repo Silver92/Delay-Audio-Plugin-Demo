@@ -9,3 +9,24 @@
 */
 
 #include "Panel_Base.h"
+
+PanelBase::PanelBase(MyDelayPluginAudioProcessor* inProcessor)
+:   mProcessor(inProcessor)
+{
+    
+}
+
+PanelBase::~PanelBase()
+{
+    
+}
+
+void PanelBase::paint (Graphics& g)
+{
+    g.setColour(Colours::whitesmoke);
+    g.fillAll();
+    
+    g.setColour(Colours::black);
+    g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 10, 5);
+    
+}

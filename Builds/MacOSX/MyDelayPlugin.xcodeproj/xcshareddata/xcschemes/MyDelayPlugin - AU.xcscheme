@@ -44,7 +44,7 @@
       allowLocationSimulation = "YES">
       <PathRunnable
          runnableDebuggingMode = "0"
-         FilePath = "/Applications/Logic Pro X.app">
+         FilePath = "/Applications/Ableton Live 10 Lite.app">
       </PathRunnable>
       <MacroExpansion>
          <BuildableReference

@@ -9,3 +9,22 @@
 */
 
 #include "Main_Panel.h"
+
+MainPanel::MainPanel(MyDelayPluginAudioProcessor* inProcessor)
+: PanelBase(inProcessor)
+{
+    setSize(MAIN_PANEL_WIDTH, MAIN_PANEL_HEIGHT);
+    
+    mInputGainPanel.reset(new GainPanel(inProcessor));
+    mInputGainPanel->setTopLeftPosition(0, 0);
+    addAndMakeVisible(mInputGainPanel.get());
+    
+    mOutputGainPanel.reset(new GainPanel(inProcessor));
+    mOutputGainPanel->setTopLeftPosition(MAIN_PANEL_WIDTH - GAIN_PANEL_WIDTH, 0);
+    addAndMakeVisible(mOutputGainPanel.get());
+}
+
+MainPanel::~MainPanel()
+{
+    
+}
