@@ -386,6 +386,13 @@
 			path = ../../Source/PluginProcessor.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		5944E37D6D510F20EBC3B978 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = UIDemensions.h;
+			path = ../../Source/UIDemensions.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		5C3C414D3F661EF580B68170 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
@@ -763,6 +770,7 @@
 			isa = PBXGroup;
 			children = (
 				9F86C6044B404819BDC1E259,
+				5944E37D6D510F20EBC3B978,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
