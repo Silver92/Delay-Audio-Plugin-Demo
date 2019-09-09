@@ -11,6 +11,7 @@
 #pragma once
 
 #include "Panel_Base.h"
+#include "Rotary_Slider.h"
 
 class FXPanel
 :   public PanelBase
@@ -23,6 +24,6 @@ public:
     
 private:
     
-    OwnedArray<Slider> mSliders;
+    OwnedArray<RotarySlider> mSliders;
     OwnedArray<Label> mLabels;
 };

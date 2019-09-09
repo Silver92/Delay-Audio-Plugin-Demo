@@ -81,9 +81,9 @@
 			isa = PBXBuildFile;
 			fileRef = 90509626E970659DB06FA50F;
 		};
-		184D9AB68D2D5ECDD531B9F1 = {
+		829BADD68FB8CFD78A8625B2 = {
 			isa = PBXBuildFile;
-			fileRef = 30464CFD99F68FB99F592392;
+			fileRef = 52018B78A115ECF17268503D;
 		};
 		1DCC57BE8AEF47C5EE4E939B = {
 			isa = PBXBuildFile;
@@ -299,11 +299,11 @@
 			path = "../../Source/Main_Panel.cpp";
 			sourceTree = "SOURCE_ROOT";
 		};
-		30464CFD99F68FB99F592392 = {
+		310447DEF8E4C5C70D83367B = {
 			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.cpp;
-			name = Slider.cpp;
-			path = ../../Source/Slider.cpp;
+			lastKnownFileType = sourcecode.c.h;
+			name = "Rotary_Slider.h";
+			path = "../../Source/Rotary_Slider.h";
 			sourceTree = "SOURCE_ROOT";
 		};
 		328B00E0C1259A0B1046E790 = {
@@ -383,6 +383,13 @@
 			path = "../../Source/Gain_Panel.h";
 			sourceTree = "SOURCE_ROOT";
 		};
+		52018B78A115ECF17268503D = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = "Rotary_Slider.cpp";
+			path = "../../Source/Rotary_Slider.cpp";
+			sourceTree = "SOURCE_ROOT";
+		};
 		53B81009A5555D44DE635151 = {
 			isa = PBXFileReference;
 			explicitFileType = wrapper.cfbundle;
@@ -458,13 +465,6 @@
 			lastKnownFileType = sourcecode.cpp.objcpp;
 			name = "include_juce_core.mm";
 			path = "../../JuceLibraryCode/include_juce_core.mm";
-			sourceTree = "SOURCE_ROOT";
-		};
-		7EFB156F0F03ACB2F6B22D54 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = Slider.h;
-			path = ../../Source/Slider.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		804BE7D5613851BDDC11CE90 = {
@@ -796,8 +796,8 @@
 		D3A405432D48AA48061C4628 = {
 			isa = PBXGroup;
 			children = (
-				30464CFD99F68FB99F592392,
-				7EFB156F0F03ACB2F6B22D54,
+				52018B78A115ECF17268503D,
+				310447DEF8E4C5C70D83367B,
 				345A64858C33F2FBD8AC335B,
 				D3175EDEE6D1190CF7FC70AE,
 			);
@@ -1706,7 +1706,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F6C552091C84019AA1D6271,
-				184D9AB68D2D5ECDD531B9F1,
+				829BADD68FB8CFD78A8625B2,
 				1DCC57BE8AEF47C5EE4E939B,
 				3B3D84636BB3D9053DC2B479,
 				752423C4C97271850ACD7429,

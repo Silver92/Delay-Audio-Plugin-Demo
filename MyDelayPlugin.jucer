@@ -15,8 +15,9 @@
     </GROUP>
     <GROUP id="{C2F5F5D6-DF9C-DF8C-6B49-210E798C8548}" name="UI">
       <GROUP id="{1C0FCBCF-ECC3-8046-BC98-6CC8FBFFF532}" name="Components">
-        <FILE id="H1wfXE" name="Slider.cpp" compile="1" resource="0" file="Source/Slider.cpp"/>
-        <FILE id="D62z9K" name="Slider.h" compile="0" resource="0" file="Source/Slider.h"/>
+        <FILE id="H1wfXE" name="Rotary_Slider.cpp" compile="1" resource="0"
+              file="Source/Rotary_Slider.cpp"/>
+        <FILE id="D62z9K" name="Rotary_Slider.h" compile="0" resource="0" file="Source/Rotary_Slider.h"/>
         <FILE id="bq6JeI" name="VU_Meter.cpp" compile="1" resource="0" file="Source/VU_Meter.cpp"/>
         <FILE id="ycPUBs" name="VU_Meter.h" compile="0" resource="0" file="Source/VU_Meter.h"/>
       </GROUP>
