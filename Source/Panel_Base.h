@@ -12,6 +12,7 @@
 
 #include "PluginProcessor.h"
 #include "UIDemensions.h"
+#include "ParameterList.h"
 
 class PanelBase
 :   public Component

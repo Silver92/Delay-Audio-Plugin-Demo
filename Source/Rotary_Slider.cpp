@@ -10,11 +10,15 @@
 
 #include "Rotary_Slider.h"
 
-RotarySlider::RotarySlider()
+RotarySlider::RotarySlider(AudioProcessorValueTreeState& stateToControl,
+                           int parameterName)
+: juce::Slider(ParameterLabel[parameterName])
 {
     setSliderStyle(SliderStyle::RotaryHorizontalVerticalDrag);
     setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
     setRange(0.0f, 1.0f, 0.001f);
+    mAttachment.reset(
+    new AudioProcessorValueTreeState::SliderAttachment(stateToControl, ParameterID[parameterName], *this));
 }
 
 RotarySlider::~RotarySlider()

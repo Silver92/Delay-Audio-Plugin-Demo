@@ -11,13 +11,15 @@
 #pragma once
 
 #include "JuceHeader.h"
+#include "ParameterList.h"
 
 class RotarySlider
 :   public Slider
 {
 public:
     
-    RotarySlider();
+    RotarySlider(AudioProcessorValueTreeState& stateToControl,
+                 int parameterName);
     
     ~RotarySlider();
     

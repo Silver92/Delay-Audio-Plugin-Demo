@@ -63,8 +63,10 @@ void Delay::process(float* inChannnel,
         
         const double sampleVal = getInterpolatedSample(readPosition);
         
+        // Don't exchange the store and output order in case the inChannel and
+        // the outChannel are same.
+        mBuffer[mDelayIndex] = (inChannnel[i] + sampleVal) * feedbackMapped;
         outChannel[i] = (inChannnel[i] * dry + sampleVal * wet);
-        mBuffer[mDelayIndex] = inChannnel[i] + (sampleVal * feedbackMapped);
         
         mDelayIndex++;
         if (mDelayIndex >= maxBufferDelaySize) {

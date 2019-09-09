@@ -10,13 +10,29 @@
 
 #include "Gain_Panel.h"
 
-GainPanel::GainPanel(MyDelayPluginAudioProcessor* inProcessor)
+GainPanel::GainPanel(MyDelayPluginAudioProcessor* inProcessor, int inParameterID)
 :   PanelBase(inProcessor)
 {
     setSize(GAIN_PANEL_WIDTH,
             GAIN_PANEL_HEIGHT);
     
-    mGainSlider.reset(new RotarySlider());
+    initWithParameterID(inParameterID);
+    
+}
+
+GainPanel::~GainPanel()
+{
+    
+}
+
+void GainPanel::paint(Graphics& g)
+{
+    PanelBase::paint(g);
+}
+
+void GainPanel::initWithParameterID(int inParameterID)
+{
+    mGainSlider.reset(new RotarySlider(mProcessor->parameters, inParameterID));
     mGainSlider->setColour(Slider::thumbColourId, Colours::black);
     mGainSlider->setBounds(25, SLIDER_POS_Y, SLIDER_SIZE, SLIDER_SIZE);
     addAndMakeVisible(mGainSlider.get());
@@ -31,15 +47,4 @@ GainPanel::GainPanel(MyDelayPluginAudioProcessor* inProcessor)
                           SLIDER_SIZE,
                           SLIDER_SIZE / 3);
     addAndMakeVisible(mGainLabel.get());
-    
-}
-
-GainPanel::~GainPanel()
-{
-    
-}
-
-void GainPanel::paint(Graphics& g)
-{
-    PanelBase::paint(g);
 }

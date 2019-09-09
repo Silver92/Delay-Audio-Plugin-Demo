@@ -20,7 +20,8 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
     int x = SLIDER_POS_X;
     int y = SLIDER_POS_Y;
     
-    RotarySlider* timeSLider = new RotarySlider();
+    RotarySlider* timeSLider = new RotarySlider(mProcessor->parameters,
+                                                Parameter_DelayTime);
     timeSLider->setColour(Slider::thumbColourId, Colours::black);
     timeSLider->setBounds(x, y, SLIDER_SIZE, SLIDER_SIZE);
     addAndMakeVisible(timeSLider);
@@ -37,7 +38,8 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
     
     x = x + SLIDER_SIZE + SLIDER_INTERVAL;
     
-    RotarySlider* feedbackSlider = new RotarySlider();
+    RotarySlider* feedbackSlider = new RotarySlider(mProcessor->parameters,
+                                                    Parameter_DelayFeedback);
     feedbackSlider->setColour(Slider::thumbColourId, Colours::black);
     feedbackSlider->setBounds(x, y, SLIDER_SIZE, SLIDER_SIZE);
     addAndMakeVisible(feedbackSlider);
@@ -55,7 +57,8 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
     x = SLIDER_POS_X;
     y = y + SLIDER_SIZE + SLIDER_INTERVAL;
 
-    RotarySlider* wetdrySlider = new RotarySlider();
+    RotarySlider* wetdrySlider = new RotarySlider(mProcessor->parameters,
+                                                  Parameter_DelayWetDry);
     wetdrySlider->setColour(Slider::thumbColourId, Colours::black);
     wetdrySlider->setBounds(x, y, SLIDER_SIZE, SLIDER_SIZE);
     addAndMakeVisible(wetdrySlider);
