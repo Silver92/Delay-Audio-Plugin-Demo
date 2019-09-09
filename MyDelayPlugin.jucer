@@ -13,6 +13,7 @@
       <FILE id="GGk9GI" name="AudioHelpers.h" compile="0" resource="0" file="Source/AudioHelpers.h"/>
       <FILE id="tPgF5g" name="ParameterList.h" compile="0" resource="0" file="Source/ParameterList.h"/>
       <FILE id="lGPBOE" name="UIDemensions.h" compile="0" resource="0" file="Source/UIDemensions.h"/>
+      <FILE id="QF1CyS" name="TODO.h" compile="0" resource="0" file="Source/TODO.h"/>
     </GROUP>
     <GROUP id="{C2F5F5D6-DF9C-DF8C-6B49-210E798C8548}" name="UI">
       <GROUP id="{1C0FCBCF-ECC3-8046-BC98-6CC8FBFFF532}" name="Components">

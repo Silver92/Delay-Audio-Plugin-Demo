@@ -285,6 +285,13 @@
 			path = ../../JuceLibraryCode/AppConfig.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		21B2C68648505AA0A0706748 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = TODO.h;
+			path = ../../Source/TODO.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		23663039A85C933F85446523 = {
 			isa = PBXFileReference;
 			explicitFileType = wrapper.cfbundle;
@@ -797,6 +804,7 @@
 				9F86C6044B404819BDC1E259,
 				B2439C2D81B237B0DC4921E1,
 				5944E37D6D510F20EBC3B978,
+				21B2C68648505AA0A0706748,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
