@@ -20,12 +20,14 @@
         <FILE id="bq6JeI" name="VU_Meter.cpp" compile="1" resource="0" file="Source/VU_Meter.cpp"/>
         <FILE id="ycPUBs" name="VU_Meter.h" compile="0" resource="0" file="Source/VU_Meter.h"/>
       </GROUP>
-      <FILE id="WZovns" name="Gain_Panel.cpp" compile="1" resource="0" file="Source/Gain_Panel.cpp"/>
-      <FILE id="FvzB23" name="Gain_Panel.h" compile="0" resource="0" file="Source/Gain_Panel.h"/>
-      <FILE id="Jt8xMg" name="Main_Panel.cpp" compile="1" resource="0" file="Source/Main_Panel.cpp"/>
-      <FILE id="kVI9iY" name="Main_Panel.h" compile="0" resource="0" file="Source/Main_Panel.h"/>
       <FILE id="mMoPVh" name="Panel_Base.cpp" compile="1" resource="0" file="Source/Panel_Base.cpp"/>
       <FILE id="oFYUpP" name="Panel_Base.h" compile="0" resource="0" file="Source/Panel_Base.h"/>
+      <FILE id="Jt8xMg" name="Main_Panel.cpp" compile="1" resource="0" file="Source/Main_Panel.cpp"/>
+      <FILE id="kVI9iY" name="Main_Panel.h" compile="0" resource="0" file="Source/Main_Panel.h"/>
+      <FILE id="zZCeW8" name="FX_Panel.cpp" compile="1" resource="0" file="Source/FX_Panel.cpp"/>
+      <FILE id="zsWS3P" name="FX_Panel.h" compile="0" resource="0" file="Source/FX_Panel.h"/>
+      <FILE id="WZovns" name="Gain_Panel.cpp" compile="1" resource="0" file="Source/Gain_Panel.cpp"/>
+      <FILE id="FvzB23" name="Gain_Panel.h" compile="0" resource="0" file="Source/Gain_Panel.h"/>
     </GROUP>
     <GROUP id="{3811E8EB-9659-219F-421B-2C17D8FCB2C6}" name="DSP">
       <FILE id="SbzI5z" name="Delay.cpp" compile="1" resource="0" file="Source/Delay.cpp"/>

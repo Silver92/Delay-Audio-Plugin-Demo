@@ -27,6 +27,6 @@ void PanelBase::paint (Graphics& g)
     g.fillAll();
     
     g.setColour(Colours::black);
-    g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 10, 5);
+    g.drawRect(0, 0, getWidth(), getHeight());
     
 }

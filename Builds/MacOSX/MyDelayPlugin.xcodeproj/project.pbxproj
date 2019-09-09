@@ -89,17 +89,21 @@
 			isa = PBXBuildFile;
 			fileRef = 345A64858C33F2FBD8AC335B;
 		};
-		3892463F71D667F3FD3EE967 = {
+		3B3D84636BB3D9053DC2B479 = {
 			isa = PBXBuildFile;
-			fileRef = 92A5DF4D8FCA5026268ABBA4;
+			fileRef = 0CB92DF1C9581CDB50036E06;
 		};
 		752423C4C97271850ACD7429 = {
 			isa = PBXBuildFile;
 			fileRef = 24508B4FBBF9CE8134433AB2;
 		};
-		3B3D84636BB3D9053DC2B479 = {
+		6AC9C8F1AC666494E8F9283D = {
 			isa = PBXBuildFile;
-			fileRef = 0CB92DF1C9581CDB50036E06;
+			fileRef = 1BC4ACD9C6AE88DE676D14A2;
+		};
+		3892463F71D667F3FD3EE967 = {
+			isa = PBXBuildFile;
+			fileRef = 92A5DF4D8FCA5026268ABBA4;
 		};
 		C40A769D514854FA5B9376FB = {
 			isa = PBXBuildFile;
@@ -251,6 +255,13 @@
 			lastKnownFileType = file.r;
 			name = "include_juce_audio_plugin_client_AU.r";
 			path = "../../JuceLibraryCode/include_juce_audio_plugin_client_AU.r";
+			sourceTree = "SOURCE_ROOT";
+		};
+		1BC4ACD9C6AE88DE676D14A2 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = "FX_Panel.cpp";
+			path = "../../Source/FX_Panel.cpp";
 			sourceTree = "SOURCE_ROOT";
 		};
 		1CB35C99E9D15D4F1F69DD2A = {
@@ -454,6 +465,13 @@
 			lastKnownFileType = sourcecode.c.h;
 			name = Slider.h;
 			path = ../../Source/Slider.h;
+			sourceTree = "SOURCE_ROOT";
+		};
+		804BE7D5613851BDDC11CE90 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = "FX_Panel.h";
+			path = "../../Source/FX_Panel.h";
 			sourceTree = "SOURCE_ROOT";
 		};
 		83092943C63A30D610D79640 = {
@@ -790,12 +808,14 @@
 			isa = PBXGroup;
 			children = (
 				D3A405432D48AA48061C4628,
-				92A5DF4D8FCA5026268ABBA4,
-				514C43753448CFCCF1547755,
-				24508B4FBBF9CE8134433AB2,
-				11B12E35D20675821FF33CD8,
 				0CB92DF1C9581CDB50036E06,
 				F297D13C76C549A7D34ADA65,
+				24508B4FBBF9CE8134433AB2,
+				11B12E35D20675821FF33CD8,
+				1BC4ACD9C6AE88DE676D14A2,
+				804BE7D5613851BDDC11CE90,
+				92A5DF4D8FCA5026268ABBA4,
+				514C43753448CFCCF1547755,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1688,9 +1708,10 @@
 				3F6C552091C84019AA1D6271,
 				184D9AB68D2D5ECDD531B9F1,
 				1DCC57BE8AEF47C5EE4E939B,
-				3892463F71D667F3FD3EE967,
-				752423C4C97271850ACD7429,
 				3B3D84636BB3D9053DC2B479,
+				752423C4C97271850ACD7429,
+				6AC9C8F1AC666494E8F9283D,
+				3892463F71D667F3FD3EE967,
 				C40A769D514854FA5B9376FB,
 				6A555F4B57CBCE0964345E56,
 				052BDC2BEA1ECBEC3B91095B,

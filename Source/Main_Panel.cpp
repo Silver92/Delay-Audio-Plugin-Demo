@@ -19,6 +19,10 @@ MainPanel::MainPanel(MyDelayPluginAudioProcessor* inProcessor)
     mInputGainPanel->setTopLeftPosition(0, 0);
     addAndMakeVisible(mInputGainPanel.get());
     
+    mFXPanel.reset(new FXPanel(inProcessor));
+    mFXPanel->setTopLeftPosition(GAIN_PANEL_WIDTH, 0);
+    addAndMakeVisible(mFXPanel.get());
+    
     mOutputGainPanel.reset(new GainPanel(inProcessor));
     mOutputGainPanel->setTopLeftPosition(MAIN_PANEL_WIDTH - GAIN_PANEL_WIDTH, 0);
     addAndMakeVisible(mOutputGainPanel.get());

@@ -12,6 +12,7 @@
 
 #include "Panel_Base.h"
 #include "Gain_Panel.h"
+#include "FX_Panel.h"
 
 class MainPanel
 :   public PanelBase
@@ -23,4 +24,5 @@ private:
     
     std::unique_ptr<GainPanel> mInputGainPanel;
     std::unique_ptr<GainPanel> mOutputGainPanel;
+    std::unique_ptr<FXPanel> mFXPanel;
 };
