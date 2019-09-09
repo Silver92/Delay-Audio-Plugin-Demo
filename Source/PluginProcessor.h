@@ -13,6 +13,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Gain.h"
 #include "Delay.h"
+#include "ParameterList.h"
 
 //==============================================================================
 /**
@@ -56,10 +57,13 @@ public:
     //==============================================================================
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
+    
+    AudioProcessorValueTreeState parameters;
 
 private:
     
     void initialization();
+    AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
     
     std::unique_ptr<Gain> mInputGain[2];
     std::unique_ptr<Gain> mOutputGain[2];

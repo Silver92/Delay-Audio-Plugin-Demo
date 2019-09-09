@@ -614,6 +614,13 @@
 			path = "/Users/silver/Documents/JUCE/modules/juce_events";
 			sourceTree = "<absolute>";
 		};
+		B2439C2D81B237B0DC4921E1 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = ParameterList.h;
+			path = ../../Source/ParameterList.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		B2EA2E91EF86C5B1B99C4C40 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
@@ -788,6 +795,7 @@
 			isa = PBXGroup;
 			children = (
 				9F86C6044B404819BDC1E259,
+				B2439C2D81B237B0DC4921E1,
 				5944E37D6D510F20EBC3B978,
 			);
 			name = Helpers;

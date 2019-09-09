@@ -21,7 +21,11 @@ MyDelayPluginAudioProcessor::MyDelayPluginAudioProcessor()
                       #endif
                        .withOutput ("Output", AudioChannelSet::stereo(), true)
                      #endif
-                       )
+                       ),
+parameters(*this,                               /** reference to processor **/
+           nullptr,                             /** null pointer to undoManager **/
+           juce::Identifier("Parameters"),      /** valueTree identifier **/
+           createParameterLayout())             /** initialize parameters **/
 #endif
 {
     initialization();
@@ -161,19 +165,19 @@ void MyDelayPluginAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
         auto* channelData = buffer.getWritePointer (channel);
         
         mInputGain[channel]->process(channelData,
-                                     0.5f,
+                                     *parameters.getRawParameterValue(ParameterID[Parameter_InputGain]),
                                      channelData,
                                      buffer.getNumSamples());
         
         mDelay[channel]->process(channelData,
-                                 0.5f,
-                                 0.2f, // feedback
-                                 0.5f,
+                                 *parameters.getRawParameterValue(ParameterID[Parameter_DelayTime]),
+                                 *parameters.getRawParameterValue(ParameterID[Parameter_DelayFeedback]), // feedback
+                                 *parameters.getRawParameterValue(ParameterID[Parameter_DelayWetDry]),
                                  channelData,
                                  buffer.getNumSamples());
         
         mOutputGain[channel]->process(channelData,
-                                     0.5f,
+                                     *parameters.getRawParameterValue(ParameterID[Parameter_OutputGain]),
                                      channelData,
                                      buffer.getNumSamples());
 
@@ -212,6 +216,24 @@ void MyDelayPluginAudioProcessor::initialization()
         mOutputGain[i].reset(new Gain());
         mDelay[i].reset(new Delay());
     }
+}
+
+AudioProcessorValueTreeState::ParameterLayout MyDelayPluginAudioProcessor::createParameterLayout()
+{
+    std::vector<std::unique_ptr<AudioParameterFloat>> params;
+    using mParameter = AudioProcessorValueTreeState::Parameter;
+    
+    for (int i = 0; i < Parameter_TotalNumParameters; i++){
+        params.push_back(std::make_unique<mParameter>(ParameterID[i],
+                                                      ParameterID[i],
+                                                      ParameterLabel[i],
+                                                      NormalisableRange<float>(0.0f, 1.0f),
+                                                      ParameterDefaultVal[i],
+                                                      nullptr,
+                                                      nullptr));
+    }
+    
+    return {params.begin(), params.end()};
 }
 
 //==============================================================================
