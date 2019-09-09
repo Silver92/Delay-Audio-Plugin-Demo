@@ -11,6 +11,7 @@
 #pragma once
 
 #include "Panel_Base.h"
+#include "Rotary_Slider.h"
 
 class GainPanel
 :   public PanelBase
@@ -23,5 +24,6 @@ public:
     
 private:
     
-private:
+    std::unique_ptr<RotarySlider> mGainSlider;
+    std::unique_ptr<Label> mGainLabel;
 };
