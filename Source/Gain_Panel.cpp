@@ -16,8 +16,8 @@ GainPanel::GainPanel(MyDelayPluginAudioProcessor* inProcessor, int inParameterID
     setSize(GAIN_PANEL_WIDTH,
             GAIN_PANEL_HEIGHT);
     
-    initWithParameterID(inParameterID);
-    
+    initSliderWithParameterID(inParameterID);
+    initVUMeter(inProcessor, inParameterID);
 }
 
 GainPanel::~GainPanel()
@@ -30,7 +30,7 @@ void GainPanel::paint(Graphics& g)
     PanelBase::paint(g);
 }
 
-void GainPanel::initWithParameterID(int inParameterID)
+void GainPanel::initSliderWithParameterID(int inParameterID)
 {
     mGainSlider.reset(new RotarySlider(mProcessor->parameters, inParameterID));
     mGainSlider->setColour(Slider::thumbColourId, Colours::black);
@@ -47,4 +47,15 @@ void GainPanel::initWithParameterID(int inParameterID)
                           SLIDER_SIZE,
                           SLIDER_SIZE / 3);
     addAndMakeVisible(mGainLabel.get());
+}
+
+void GainPanel::initVUMeter(MyDelayPluginAudioProcessor *inProcessor, int inParameterID)
+{
+    mVUMeter.reset(new VUMeter(inProcessor));
+    mVUMeter->setBounds(getWidth() * 0.5 - VUMETER_WIDTH * 1.05,
+                        SLIDER_POS_Y + SLIDER_SIZE * 1.3,
+                        SLIDER_SIZE,
+                        getHeight() * 0.4);
+    addAndMakeVisible(mVUMeter.get());
+    mVUMeter->setParameterID(inParameterID);
 }

@@ -232,6 +232,19 @@ void MyDelayPluginAudioProcessor::setStateInformation (const void* data, int siz
     }
 }
 
+//==============================================================================
+float MyDelayPluginAudioProcessor::getInputGainMeterLevel (int inChannel)
+{
+    const float normalizeddB = dBToNormalizedGain(mInputGain[inChannel]->getMeterLevel());
+    return normalizeddB;
+}
+
+float MyDelayPluginAudioProcessor::getOutputGainMeterLevel (int inChannel)
+{
+    const float normalizeddB = dBToNormalizedGain(mOutputGain[inChannel]->getMeterLevel());
+    return normalizeddB;
+}
+
 void MyDelayPluginAudioProcessor::initialization()
 {
     for (int i = 0; i < inputChannels; i++) {

@@ -49,10 +49,11 @@ void Delay::process(float* inChannnel,
     const float wet = inWetRatio;
     const float dry = 1.0f - wet;
     float feedbackMapped = jmap(inFeedback, 0.0f, 1.0f, 0.0f, 0.95f);
+    float inTimeMapped = jmap(inTime, 0.0f, 1.0f, 0.05f, 1.0f);
     
     for (int i = 0; i < SampleNumToRender; i++) {
         
-        mTimeSmoothed = mTimeSmoothed - ParameterSmoothingCoeff * (mTimeSmoothed - inTime);
+        mTimeSmoothed = mTimeSmoothed - ParameterSmoothingCoeff * (mTimeSmoothed - inTimeMapped);
         
         const double delayTimeInSamples = (mTimeSmoothed * mSampleRate);
         

@@ -25,3 +25,5 @@
 #define SLIDER_POS_X        30
 #define SLIDER_POS_Y        20
 #define SLIDER_INTERVAL     40
+
+#define VUMETER_WIDTH       SLIDER_SIZE / 3

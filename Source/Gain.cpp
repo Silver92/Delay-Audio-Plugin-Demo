@@ -10,6 +10,7 @@
 
 #include "Gain.h"
 #include "JuceHeader.h"
+#include "AudioHelpers.h"
 
 Gain::Gain()
 {
@@ -32,4 +33,12 @@ void Gain::process(float* inChannel,
     for (int sample = 0; sample < sampleNumToRender; sample++) {
         outChannel[sample] = inChannel[sample] * dBinGain;
     }
+    
+    float absValue = fabs(outChannel[0]);
+    mOutputSmoothed = MeterSmoothingCoeff * (mOutputSmoothed - absValue) + absValue;
+}
+
+float Gain::getMeterLevel()
+{
+    return mOutputSmoothed;
 }

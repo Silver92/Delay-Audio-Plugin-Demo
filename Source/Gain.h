@@ -21,7 +21,7 @@ public:
                  float* outChannel,
                  int sampleNumToRender);
     
-    
+    float getMeterLevel();
 private:
     float mOutputSmoothed;
 };
