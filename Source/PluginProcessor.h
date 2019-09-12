@@ -14,6 +14,7 @@
 #include "Gain.h"
 #include "Delay.h"
 #include "ParameterList.h"
+#include "Preset_Manager.h"
 
 //==============================================================================
 /**
@@ -68,6 +69,7 @@ private:
     std::unique_ptr<Gain> mInputGain[2];
     std::unique_ptr<Gain> mOutputGain[2];
     std::unique_ptr<Delay> mDelay[2];
+    std::unique_ptr<PresetManager> mPresetManager;
     
     int inputChannels = getTotalNumInputChannels();
     

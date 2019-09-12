@@ -29,7 +29,7 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
     
     Label* timeLabel = new Label();
     timeLabel->setFont(Font(16.0f, Font::bold));
-    timeLabel->setText("Delay Time", dontSendNotification);
+    timeLabel->setText(ParameterLabel[Parameter_DelayTime], dontSendNotification);
     timeLabel->setColour(Label::textColourId, Colours::black);
     timeLabel->setJustificationType(Justification::centred);
     timeLabel->setBounds(x, y + SLIDER_SIZE * 0.9, SLIDER_SIZE, SLIDER_SIZE / 3);
@@ -47,7 +47,7 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
     
     Label* feedbackLabel = new Label();
     feedbackLabel->setFont(Font(16.0f, Font::bold));
-    feedbackLabel->setText("Feedback", dontSendNotification);
+    feedbackLabel->setText(ParameterLabel[Parameter_DelayFeedback], dontSendNotification);
     feedbackLabel->setColour(Label::textColourId, Colours::black);
     feedbackLabel->setJustificationType(Justification::centred);
     feedbackLabel->setBounds(x, y + SLIDER_SIZE * 0.9, SLIDER_SIZE, SLIDER_SIZE / 3);
@@ -58,7 +58,7 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
     y = y + SLIDER_SIZE + SLIDER_INTERVAL;
 
     RotarySlider* wetdrySlider = new RotarySlider(mProcessor->parameters,
-                                                  Parameter_DelayWetDry);
+                                                  Parameter_DelayDryWet);
     wetdrySlider->setColour(Slider::thumbColourId, Colours::black);
     wetdrySlider->setBounds(x, y, SLIDER_SIZE, SLIDER_SIZE);
     addAndMakeVisible(wetdrySlider);
@@ -66,7 +66,7 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
     
     Label* wetdryLabel = new Label();
     wetdryLabel->setFont(Font(16.0f, Font::bold));
-    wetdryLabel->setText("Wet/Dry", dontSendNotification);
+    wetdryLabel->setText(ParameterLabel[Parameter_DelayDryWet], dontSendNotification);
     wetdryLabel->setColour(Label::textColourId, Colours::black);
     wetdryLabel->setJustificationType(Justification::centred);
     wetdryLabel->setBounds(x, y + SLIDER_SIZE * 0.9, SLIDER_SIZE, SLIDER_SIZE / 3);

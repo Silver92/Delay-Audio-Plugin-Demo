@@ -39,7 +39,7 @@ void GainPanel::initWithParameterID(int inParameterID)
     
     mGainLabel.reset(new Label());
     mGainLabel->setFont(Font(16.0f, Font::bold));
-    mGainLabel->setText("Gain", dontSendNotification);
+    mGainLabel->setText(ParameterLabel[inParameterID], dontSendNotification);
     mGainLabel->setColour(Label::textColourId, Colours::black);
     mGainLabel->setJustificationType(Justification::centred);
     mGainLabel->setBounds(25,

@@ -29,6 +29,7 @@ parameters(*this,                               /** reference to processor **/
 #endif
 {
     initialization();
+    mPresetManager.reset(new PresetManager(this));
 }
 
 MyDelayPluginAudioProcessor::~MyDelayPluginAudioProcessor()
@@ -163,23 +164,28 @@ void MyDelayPluginAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
         auto* channelData = buffer.getWritePointer (channel);
+        auto inputGain = *parameters.getRawParameterValue(ParameterID[Parameter_InputGain]);
+        auto delayTime = *parameters.getRawParameterValue(ParameterID[Parameter_DelayTime]);
+        auto delayFeedback = *parameters.getRawParameterValue(ParameterID[Parameter_DelayFeedback]);
+        auto delayDryWet = *parameters.getRawParameterValue(ParameterID[Parameter_DelayDryWet]);
+        auto outputGain = *parameters.getRawParameterValue(ParameterID[Parameter_OutputGain]);
         
         mInputGain[channel]->process(channelData,
-                                     *parameters.getRawParameterValue(ParameterID[Parameter_InputGain]),
+                                     inputGain,
                                      channelData,
                                      buffer.getNumSamples());
         
         mDelay[channel]->process(channelData,
-                                 *parameters.getRawParameterValue(ParameterID[Parameter_DelayTime]),
-                                 *parameters.getRawParameterValue(ParameterID[Parameter_DelayFeedback]), // feedback
-                                 *parameters.getRawParameterValue(ParameterID[Parameter_DelayWetDry]),
+                                 delayTime,
+                                 delayFeedback,
+                                 delayDryWet,
                                  channelData,
                                  buffer.getNumSamples());
         
         mOutputGain[channel]->process(channelData,
-                                     *parameters.getRawParameterValue(ParameterID[Parameter_OutputGain]),
-                                     channelData,
-                                     buffer.getNumSamples());
+                                      outputGain,
+                                      channelData,
+                                      buffer.getNumSamples());
 
     }
 }
@@ -201,12 +207,29 @@ void MyDelayPluginAudioProcessor::getStateInformation (MemoryBlock& destData)
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
+    
+    XmlElement preset("StateInfo");
+    XmlElement* presetBody = new XmlElement("Preset");
+    
+    mPresetManager->getXmlForPreset(presetBody);
+    preset.addChildElement(presetBody);
+    copyXmlToBinary(preset, destData);
 }
 
 void MyDelayPluginAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
+    
+    std::unique_ptr<XmlElement> xmlState = getXmlFromBinary(data, sizeInBytes);
+    
+    if (xmlState) {
+        forEachXmlChildElement(*xmlState, subChild) {
+            mPresetManager->loadPresetForXml(subChild);
+        }
+    } else {
+        jassertfalse;
+    }
 }
 
 void MyDelayPluginAudioProcessor::initialization()

@@ -15,7 +15,7 @@ enum Parameter
     Parameter_InputGain = 0,
     Parameter_DelayTime,
     Parameter_DelayFeedback,
-    Parameter_DelayWetDry,
+    Parameter_DelayDryWet,
     Parameter_OutputGain,
     Parameter_TotalNumParameters,
 };
@@ -25,7 +25,7 @@ static String ParameterID [Parameter_TotalNumParameters] =
     "InputGain",
     "Time",
     "Feedback",
-    "WetDry",
+    "DryWet",
     "OutputGain",
 };
 
@@ -34,8 +34,8 @@ static String ParameterLabel [Parameter_TotalNumParameters] =
 {
     "Input Gain",
     "Delay Time",
-    "Delay Feedback",
-    "Delay WetDry",
+    "Feedback",
+    "Dry/Wet",
     "Output Gain",
 };
 
