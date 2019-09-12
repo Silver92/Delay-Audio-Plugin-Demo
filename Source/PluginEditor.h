@@ -14,6 +14,7 @@
 #include "PluginProcessor.h"
 
 #include "Main_Panel.h"
+#include "MyLookAndFeel.h"
 
 //==============================================================================
 /**
@@ -34,6 +35,7 @@ private:
     MyDelayPluginAudioProcessor& processor;
     
     std::unique_ptr<MainPanel> mMainPanel;
+    std::unique_ptr<MyLookAndFeel> mLookAndFeel;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MyDelayPluginAudioProcessorEditor)
 };
