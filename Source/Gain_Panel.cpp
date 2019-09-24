@@ -16,7 +16,7 @@ GainPanel::GainPanel(MyDelayPluginAudioProcessor* inProcessor, int inParameterID
     setSize(GAIN_PANEL_WIDTH,
             GAIN_PANEL_HEIGHT);
     
-    initSliderWithParameterID(inParameterID);
+    initSliderWithParameterID(inProcessor, inParameterID);
     initVUMeter(inProcessor, inParameterID);
 }
 
@@ -30,11 +30,14 @@ void GainPanel::paint(Graphics& g)
     PanelBase::paint(g);
 }
 
-void GainPanel::initSliderWithParameterID(int inParameterID)
+void GainPanel::initSliderWithParameterID(MyDelayPluginAudioProcessor* inProcessor, int inParameterID)
 {
     mGainSlider.reset(new RotarySlider(mProcessor->parameters, inParameterID));
     mGainSlider->setColour(Slider::thumbColourId, Colours::black);
-    mGainSlider->setBounds(25, SLIDER_POS_Y, SLIDER_SIZE, SLIDER_SIZE);
+    mGainSlider->setBounds(getWidth() * 0.5 - SLIDER_SIZE * 0.5,
+                           SLIDER_POS_Y,
+                           SLIDER_SIZE,
+                           SLIDER_SIZE);
     addAndMakeVisible(mGainSlider.get());
     
     mGainLabel.reset(new Label());
@@ -42,11 +45,20 @@ void GainPanel::initSliderWithParameterID(int inParameterID)
     mGainLabel->setText(ParameterLabel[inParameterID], dontSendNotification);
     mGainLabel->setColour(Label::textColourId, Colours::black);
     mGainLabel->setJustificationType(Justification::centred);
-    mGainLabel->setBounds(25,
+    mGainLabel->setBounds(getWidth() * 0.5 - SLIDER_SIZE * 0.5,
                           SLIDER_POS_Y + SLIDER_SIZE * 0.9,
                           SLIDER_SIZE,
                           SLIDER_SIZE / 3);
     addAndMakeVisible(mGainLabel.get());
+    
+    
+    mSliderText.reset(new SliderText(inProcessor));
+    mSliderText->setParameterID(inParameterID);
+    mSliderText->setBounds(getWidth() * 0.5 - SLIDER_SIZE * 0.5,
+                           SLIDER_POS_Y + SLIDER_SIZE / 4,
+                           SLIDER_SIZE,
+                           SLIDER_SIZE / 2);
+    addAndMakeVisible(mSliderText.get());
 }
 
 void GainPanel::initVUMeter(MyDelayPluginAudioProcessor *inProcessor, int inParameterID)

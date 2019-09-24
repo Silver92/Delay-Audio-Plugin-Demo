@@ -13,6 +13,7 @@
 #include "Panel_Base.h"
 #include "Rotary_Slider.h"
 #include "VU_Meter.h"
+#include "Slider_Text.h"
 
 class GainPanel
 :   public PanelBase
@@ -27,10 +28,11 @@ GainPanel(MyDelayPluginAudioProcessor* inProcessor, int inParameterID);
     
 private:
     
-    void initSliderWithParameterID(int inParameterID);
+    void initSliderWithParameterID(MyDelayPluginAudioProcessor* inProcessor, int inParameterID);
     void initVUMeter(MyDelayPluginAudioProcessor *inProcessor, int inParameterID);
     
     std::unique_ptr<RotarySlider> mGainSlider;
     std::unique_ptr<Label> mGainLabel;
     std::unique_ptr<VUMeter> mVUMeter;
+    std::unique_ptr<SliderText> mSliderText;
 };

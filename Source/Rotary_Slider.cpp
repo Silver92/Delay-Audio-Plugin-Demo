@@ -9,13 +9,14 @@
 */
 
 #include "Rotary_Slider.h"
+#include "UIDemensions.h"
 
 RotarySlider::RotarySlider(AudioProcessorValueTreeState& stateToControl,
                            int parameterName)
-: juce::Slider(ParameterLabel[parameterName])
+:   juce::Slider(ParameterLabel[parameterName])
 {
     setSliderStyle(SliderStyle::RotaryHorizontalVerticalDrag);
-    setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
+    setTextBoxStyle(Slider::NoTextBox, false, SLIDER_SIZE, SLIDER_SIZE / 3);
     setRange(0.0f, 1.0f, 0.001f);
     mAttachment.reset(
     new AudioProcessorValueTreeState::SliderAttachment(stateToControl, ParameterID[parameterName], *this));

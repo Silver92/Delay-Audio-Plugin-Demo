@@ -36,7 +36,14 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
     addAndMakeVisible(timeLabel);
     mLabels.add(timeLabel);
     
+    SliderText* timeText = new SliderText(inProcessor);
+    timeText->setParameterID(Parameter_DelayTime);
+    timeText->setBounds(x, y + SLIDER_SIZE / 4, SLIDER_SIZE, SLIDER_SIZE / 2);
+    addAndMakeVisible(timeText);
+    mSliderTexts.add(timeText);
+    
     x = x + SLIDER_SIZE + SLIDER_INTERVAL;
+    //=================================================================================
     
     RotarySlider* feedbackSlider = new RotarySlider(mProcessor->parameters,
                                                     Parameter_DelayFeedback);
@@ -54,24 +61,37 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
     addAndMakeVisible(feedbackLabel);
     mLabels.add(feedbackLabel);
     
+    SliderText* feedbackText = new SliderText(inProcessor);
+    feedbackText->setParameterID(Parameter_DelayFeedback);
+    feedbackText->setBounds(x, y + SLIDER_SIZE / 4, SLIDER_SIZE, SLIDER_SIZE / 2);
+    addAndMakeVisible(feedbackText);
+    mSliderTexts.add(feedbackText);
+    
     x = SLIDER_POS_X;
     y = y + SLIDER_SIZE + SLIDER_INTERVAL;
+    //=================================================================================
 
-    RotarySlider* wetdrySlider = new RotarySlider(mProcessor->parameters,
+    RotarySlider* drywetSlider = new RotarySlider(mProcessor->parameters,
                                                   Parameter_DelayDryWet);
-    wetdrySlider->setColour(Slider::thumbColourId, Colours::black);
-    wetdrySlider->setBounds(x, y, SLIDER_SIZE, SLIDER_SIZE);
-    addAndMakeVisible(wetdrySlider);
-    mSliders.add(wetdrySlider);
+    drywetSlider->setColour(Slider::thumbColourId, Colours::black);
+    drywetSlider->setBounds(x, y, SLIDER_SIZE, SLIDER_SIZE);
+    addAndMakeVisible(drywetSlider);
+    mSliders.add(drywetSlider);
     
-    Label* wetdryLabel = new Label();
-    wetdryLabel->setFont(Font(16.0f, Font::bold));
-    wetdryLabel->setText(ParameterLabel[Parameter_DelayDryWet], dontSendNotification);
-    wetdryLabel->setColour(Label::textColourId, Colours::black);
-    wetdryLabel->setJustificationType(Justification::centred);
-    wetdryLabel->setBounds(x, y + SLIDER_SIZE * 0.9, SLIDER_SIZE, SLIDER_SIZE / 3);
-    addAndMakeVisible(wetdryLabel);
-    mLabels.add(wetdryLabel);
+    Label* drywetLabel = new Label();
+    drywetLabel->setFont(Font(16.0f, Font::bold));
+    drywetLabel->setText(ParameterLabel[Parameter_DelayDryWet], dontSendNotification);
+    drywetLabel->setColour(Label::textColourId, Colours::black);
+    drywetLabel->setJustificationType(Justification::centred);
+    drywetLabel->setBounds(x, y + SLIDER_SIZE * 0.9, SLIDER_SIZE, SLIDER_SIZE / 3);
+    addAndMakeVisible(drywetLabel);
+    mLabels.add(drywetLabel);
+    
+    SliderText* drywetText = new SliderText(inProcessor);
+    drywetText->setParameterID(Parameter_DelayDryWet);
+    drywetText->setBounds(x, y + SLIDER_SIZE / 4, SLIDER_SIZE, SLIDER_SIZE / 2);
+    addAndMakeVisible(drywetText);
+    mSliderTexts.add(drywetText);
 }
 
 FXPanel::~FXPanel()

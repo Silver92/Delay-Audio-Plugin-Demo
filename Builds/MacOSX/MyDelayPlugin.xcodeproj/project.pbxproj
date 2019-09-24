@@ -85,6 +85,10 @@
 			isa = PBXBuildFile;
 			fileRef = 52018B78A115ECF17268503D;
 		};
+		8D2D4B236C84DD0CA0FE243E = {
+			isa = PBXBuildFile;
+			fileRef = 18599F81E58CA71908D8EB4A;
+		};
 		1DCC57BE8AEF47C5EE4E939B = {
 			isa = PBXBuildFile;
 			fileRef = 345A64858C33F2FBD8AC335B;
@@ -249,6 +253,13 @@
 			name = "juce_core";
 			path = "/Users/silver/Documents/JUCE/modules/juce_core";
 			sourceTree = "<absolute>";
+		};
+		18599F81E58CA71908D8EB4A = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = "Slider_Text.cpp";
+			path = "../../Source/Slider_Text.cpp";
+			sourceTree = "SOURCE_ROOT";
 		};
 		18A225E2AC0FDD16037E0F7F = {
 			isa = PBXFileReference;
@@ -579,6 +590,13 @@
 			path = ../../Source/AudioHelpers.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		A0B3F6E62B399B33BE2A9FE2 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = "Slider_Text.h";
+			path = "../../Source/Slider_Text.h";
+			sourceTree = "SOURCE_ROOT";
+		};
 		A1045E900DE3CEEBC073F5A4 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
@@ -754,6 +772,13 @@
 			path = System/Library/Frameworks/Accelerate.framework;
 			sourceTree = SDKROOT;
 		};
+		E09F9C5228329CF2B02CA216 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = PluginEditor.cpp;
+			path = ../../Source/PluginEditor.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
 		E6084895EDEFB0341D5FE575 = {
 			isa = PBXFileReference;
 			explicitFileType = wrapper.application;
@@ -767,13 +792,6 @@
 			includeInIndex = 0;
 			path = libMyDelayPlugin.a;
 			sourceTree = "BUILT_PRODUCTS_DIR";
-		};
-		E09F9C5228329CF2B02CA216 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.cpp;
-			name = PluginEditor.cpp;
-			path = ../../Source/PluginEditor.cpp;
-			sourceTree = "SOURCE_ROOT";
 		};
 		F297D13C76C549A7D34ADA65 = {
 			isa = PBXFileReference;
@@ -822,6 +840,8 @@
 			children = (
 				52018B78A115ECF17268503D,
 				310447DEF8E4C5C70D83367B,
+				18599F81E58CA71908D8EB4A,
+				A0B3F6E62B399B33BE2A9FE2,
 				345A64858C33F2FBD8AC335B,
 				D3175EDEE6D1190CF7FC70AE,
 			);
@@ -1731,6 +1751,7 @@
 			files = (
 				3F6C552091C84019AA1D6271,
 				829BADD68FB8CFD78A8625B2,
+				8D2D4B236C84DD0CA0FE243E,
 				1DCC57BE8AEF47C5EE4E939B,
 				3B3D84636BB3D9053DC2B479,
 				752423C4C97271850ACD7429,

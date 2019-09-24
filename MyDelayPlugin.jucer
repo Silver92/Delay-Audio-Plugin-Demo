@@ -21,6 +21,8 @@
         <FILE id="H1wfXE" name="Rotary_Slider.cpp" compile="1" resource="0"
               file="Source/Rotary_Slider.cpp"/>
         <FILE id="D62z9K" name="Rotary_Slider.h" compile="0" resource="0" file="Source/Rotary_Slider.h"/>
+        <FILE id="YflP4Y" name="Slider_Text.cpp" compile="1" resource="0" file="Source/Slider_Text.cpp"/>
+        <FILE id="mu4EFy" name="Slider_Text.h" compile="0" resource="0" file="Source/Slider_Text.h"/>
         <FILE id="bq6JeI" name="VU_Meter.cpp" compile="1" resource="0" file="Source/VU_Meter.cpp"/>
         <FILE id="ycPUBs" name="VU_Meter.h" compile="0" resource="0" file="Source/VU_Meter.h"/>
       </GROUP>

@@ -12,9 +12,10 @@
 
 /*
  
- - When delay == 0, the delay line is not stable. possible cause of the point precision.
- - Show the parameter numbers on the interface
- - Smooth the VUMeter Level
+ - Make the text editable to change the  parameter value
+ - add the unit to each param text
+ - Smooth the VUMeter Level (RMS),
+ - Added the Meter alert when overloading the level
  - Searching new UI patterns)
  - Possible refurbishing: phaser
  

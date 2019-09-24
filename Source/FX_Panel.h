@@ -12,6 +12,7 @@
 
 #include "Panel_Base.h"
 #include "Rotary_Slider.h"
+#include "Slider_Text.h"
 
 class FXPanel
 :   public PanelBase
@@ -26,4 +27,5 @@ private:
     
     OwnedArray<RotarySlider> mSliders;
     OwnedArray<Label> mLabels;
+    OwnedArray<SliderText> mSliderTexts;
 };
