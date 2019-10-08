@@ -41,21 +41,22 @@ void GainPanel::initSliderWithParameterID(MyDelayPluginAudioProcessor* inProcess
     addAndMakeVisible(mGainSlider.get());
     
     mGainLabel.reset(new Label());
-    mGainLabel->setFont(Font(16.0f, Font::bold));
+    mGainLabel->setFont(Font(18.0f));
     mGainLabel->setText(ParameterLabel[inParameterID], dontSendNotification);
     mGainLabel->setColour(Label::textColourId, Colours::black);
     mGainLabel->setJustificationType(Justification::centred);
     mGainLabel->setBounds(getWidth() * 0.5 - SLIDER_SIZE * 0.5,
-                          SLIDER_POS_Y + SLIDER_SIZE * 0.9,
+                          SLIDER_POS_Y - SLIDER_SIZE * 0.55,
                           SLIDER_SIZE,
-                          SLIDER_SIZE / 3);
+                          SLIDER_SIZE / 2);
     addAndMakeVisible(mGainLabel.get());
     
     
     mSliderText.reset(new SliderText(inProcessor));
     mSliderText->setParameterID(inParameterID);
+    mSliderText->setFont(23.0f);
     mSliderText->setBounds(getWidth() * 0.5 - SLIDER_SIZE * 0.5,
-                           SLIDER_POS_Y + SLIDER_SIZE / 4,
+                           SLIDER_POS_Y - SLIDER_SIZE * 0.32,
                            SLIDER_SIZE,
                            SLIDER_SIZE / 2);
     addAndMakeVisible(mSliderText.get());
@@ -65,7 +66,7 @@ void GainPanel::initVUMeter(MyDelayPluginAudioProcessor *inProcessor, int inPara
 {
     mVUMeter.reset(new VUMeter(inProcessor));
     mVUMeter->setBounds(getWidth() * 0.5 - VUMETER_WIDTH * 1.05,
-                        SLIDER_POS_Y + SLIDER_SIZE * 1.3,
+                        SLIDER_POS_Y + SLIDER_SIZE,
                         SLIDER_SIZE,
                         getHeight() * 0.4);
     addAndMakeVisible(mVUMeter.get());

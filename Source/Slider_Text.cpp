@@ -35,8 +35,8 @@ void SliderText::timerCallback()
 {
     auto val = *(mProcessor->parameters.
                  getRawParameterValue(ParameterID[mParameterID]));
-    String currentText = std::to_string(jmap(val, 0.0f, 1.0f, 0.05f, 1.0f));
-    setText(currentText.substring(0, 4), dontSendNotification);
+    setText(String(val).substring(0, 4), dontSendNotification);
+    setJustificationType(Justification::centred);
 }
 
 void SliderText::setParameterID(int inParameterID)

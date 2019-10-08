@@ -32,11 +32,11 @@ static String ParameterID [Parameter_TotalNumParameters] =
 
 static String ParameterLabel [Parameter_TotalNumParameters] =
 {
-    "Input Gain",
-    "Delay Time",
+    "Input",
+    "Time",
     "Feedback",
     "Dry/Wet",
-    "Output Gain",
+    "Output",
 };
 
 static float ParameterDefaultVal [Parameter_TotalNumParameters] =

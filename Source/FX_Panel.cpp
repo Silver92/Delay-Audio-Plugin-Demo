@@ -20,78 +20,24 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
     int x = SLIDER_POS_X;
     int y = SLIDER_POS_Y;
     
-    RotarySlider* timeSLider = new RotarySlider(mProcessor->parameters,
-                                                Parameter_DelayTime);
-    timeSLider->setColour(Slider::thumbColourId, Colours::black);
-    timeSLider->setBounds(x, y, SLIDER_SIZE, SLIDER_SIZE);
-    addAndMakeVisible(timeSLider);
-    mSliders.add(timeSLider);
-    
-    Label* timeLabel = new Label();
-    timeLabel->setFont(Font(16.0f, Font::bold));
-    timeLabel->setText(ParameterLabel[Parameter_DelayTime], dontSendNotification);
-    timeLabel->setColour(Label::textColourId, Colours::black);
-    timeLabel->setJustificationType(Justification::centred);
-    timeLabel->setBounds(x, y + SLIDER_SIZE * 0.9, SLIDER_SIZE, SLIDER_SIZE / 3);
-    addAndMakeVisible(timeLabel);
-    mLabels.add(timeLabel);
-    
-    SliderText* timeText = new SliderText(inProcessor);
-    timeText->setParameterID(Parameter_DelayTime);
-    timeText->setBounds(x, y + SLIDER_SIZE / 4, SLIDER_SIZE, SLIDER_SIZE / 2);
-    addAndMakeVisible(timeText);
-    mSliderTexts.add(timeText);
+    drawSlider(x, y, Parameter_DelayTime);
+    drawSliderLabel(x, y, Parameter_DelayTime);
+    drawSliderText(inProcessor, x, y, Parameter_DelayTime);
     
     x = x + SLIDER_SIZE + SLIDER_INTERVAL;
     //=================================================================================
     
-    RotarySlider* feedbackSlider = new RotarySlider(mProcessor->parameters,
-                                                    Parameter_DelayFeedback);
-    feedbackSlider->setColour(Slider::thumbColourId, Colours::black);
-    feedbackSlider->setBounds(x, y, SLIDER_SIZE, SLIDER_SIZE);
-    addAndMakeVisible(feedbackSlider);
-    mSliders.add(feedbackSlider);
-    
-    Label* feedbackLabel = new Label();
-    feedbackLabel->setFont(Font(16.0f, Font::bold));
-    feedbackLabel->setText(ParameterLabel[Parameter_DelayFeedback], dontSendNotification);
-    feedbackLabel->setColour(Label::textColourId, Colours::black);
-    feedbackLabel->setJustificationType(Justification::centred);
-    feedbackLabel->setBounds(x, y + SLIDER_SIZE * 0.9, SLIDER_SIZE, SLIDER_SIZE / 3);
-    addAndMakeVisible(feedbackLabel);
-    mLabels.add(feedbackLabel);
-    
-    SliderText* feedbackText = new SliderText(inProcessor);
-    feedbackText->setParameterID(Parameter_DelayFeedback);
-    feedbackText->setBounds(x, y + SLIDER_SIZE / 4, SLIDER_SIZE, SLIDER_SIZE / 2);
-    addAndMakeVisible(feedbackText);
-    mSliderTexts.add(feedbackText);
+    drawSlider(x, y, Parameter_DelayFeedback);
+    drawSliderLabel(x, y, Parameter_DelayFeedback);
+    drawSliderText(inProcessor, x, y, Parameter_DelayFeedback);
     
     x = SLIDER_POS_X;
     y = y + SLIDER_SIZE + SLIDER_INTERVAL;
     //=================================================================================
 
-    RotarySlider* drywetSlider = new RotarySlider(mProcessor->parameters,
-                                                  Parameter_DelayDryWet);
-    drywetSlider->setColour(Slider::thumbColourId, Colours::black);
-    drywetSlider->setBounds(x, y, SLIDER_SIZE, SLIDER_SIZE);
-    addAndMakeVisible(drywetSlider);
-    mSliders.add(drywetSlider);
-    
-    Label* drywetLabel = new Label();
-    drywetLabel->setFont(Font(16.0f, Font::bold));
-    drywetLabel->setText(ParameterLabel[Parameter_DelayDryWet], dontSendNotification);
-    drywetLabel->setColour(Label::textColourId, Colours::black);
-    drywetLabel->setJustificationType(Justification::centred);
-    drywetLabel->setBounds(x, y + SLIDER_SIZE * 0.9, SLIDER_SIZE, SLIDER_SIZE / 3);
-    addAndMakeVisible(drywetLabel);
-    mLabels.add(drywetLabel);
-    
-    SliderText* drywetText = new SliderText(inProcessor);
-    drywetText->setParameterID(Parameter_DelayDryWet);
-    drywetText->setBounds(x, y + SLIDER_SIZE / 4, SLIDER_SIZE, SLIDER_SIZE / 2);
-    addAndMakeVisible(drywetText);
-    mSliderTexts.add(drywetText);
+    drawSlider(x, y, Parameter_DelayDryWet);
+    drawSliderLabel(x, y, Parameter_DelayDryWet);
+    drawSliderText(inProcessor, x, y, Parameter_DelayDryWet);
 }
 
 FXPanel::~FXPanel()
@@ -104,3 +50,31 @@ void FXPanel::paint(Graphics& g)
     
 }
 
+void FXPanel::drawSlider(int x, int y, int parameterIndex) {
+    RotarySlider* slider = new RotarySlider(mProcessor->parameters,
+                                                  parameterIndex);
+    slider->setColour(Slider::thumbColourId, Colours::black);
+    slider->setBounds(x, y, SLIDER_SIZE, SLIDER_SIZE);
+    addAndMakeVisible(slider);
+    mSliders.add(slider);
+}
+
+void FXPanel::drawSliderLabel(int x, int y, int parameterIndex) {
+    Label* label = new Label();
+    label->setFont(Font(18.0f));
+    label->setText(ParameterLabel[parameterIndex], dontSendNotification);
+    label->setColour(Label::textColourId, Colours::black);
+    label->setJustificationType(Justification::centred);
+    label->setBounds(x, y - SLIDER_SIZE * 0.55, SLIDER_SIZE, SLIDER_SIZE / 2);
+    addAndMakeVisible(label);
+    mLabels.add(label);
+}
+
+void FXPanel::drawSliderText(MyDelayPluginAudioProcessor *inProcessor, int x, int y, int parameterIndex) {
+    SliderText* text = new SliderText(inProcessor);
+    text->setParameterID(parameterIndex);
+    text->setFont(Font(23.0f));
+    text->setBounds(x, y - SLIDER_SIZE * 0.32, SLIDER_SIZE, SLIDER_SIZE / 2);
+    addAndMakeVisible(text);
+    mSliderTexts.add(text);
+}

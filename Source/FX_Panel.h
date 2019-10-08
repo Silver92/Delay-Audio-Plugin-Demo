@@ -18,10 +18,15 @@ class FXPanel
 :   public PanelBase
 {
 public:
+    
     FXPanel(MyDelayPluginAudioProcessor* inProcessor);
     ~FXPanel();
     
     void paint(Graphics& g) override;
+    
+    void drawSlider(int x, int y, int parameterIndex);
+    void drawSliderLabel(int x, int y, int parameterIndex);
+    void drawSliderText(MyDelayPluginAudioProcessor *inProcessor, int x, int y, int parameterIndex);
     
 private:
     
