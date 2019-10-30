@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="N7FUb8" name="MyDelayPlugin" projectType="audioplug" jucerVersion="5.4.4"
+<JUCERPROJECT id="N7FUb8" name="MyDelayPlugin" projectType="audioplug" jucerVersion="5.4.5"
               companyName="Silver">
   <MAINGROUP id="kmOuzh" name="MyDelayPlugin">
     <GROUP id="{40EF90BF-7055-5FC5-235F-8B7BB94EDA40}" name="Managers">

@@ -10,9 +10,11 @@
 
 #include "Slider_Text.h"
 
-SliderText::SliderText(MyDelayPluginAudioProcessor* inProcessor)
+SliderText::SliderText()
 :   mParameterID(-1),
-    mProcessor(inProcessor)
+    minRange(0.f),
+    maxRange(1.f),
+    unit("")
 {
     setFont(Font(16.0f, Font::bold));
     setColour(Label::textColourId, Colours::black);
@@ -31,16 +33,38 @@ SliderText::~SliderText()
 //    g.drawRect(0, 0, getWidth(), getHeight());
 //}
 
-void SliderText::timerCallback()
-{
-    auto val = *(mProcessor->parameters.
-                 getRawParameterValue(ParameterID[mParameterID]));
-    setText(String(val).substring(0, 4), dontSendNotification);
-    setJustificationType(Justification::centred);
-}
-
 void SliderText::setParameterID(int inParameterID)
 {
     mParameterID = inParameterID;
-    startTimer(10);
+}
+
+void SliderText::setTextRange(float inMinVal, float inMaxVal)
+{
+    minRange = inMinVal;
+    maxRange = inMaxVal;
+}
+
+void SliderText::setUnit(String inString)
+{
+    unit = inString;
+}
+
+int SliderText::getParameterID()
+{
+    return mParameterID;
+}
+
+float SliderText::getMinRange()
+{
+    return minRange;
+}
+
+float SliderText::getMaxRange()
+{
+    return maxRange;
+}
+
+String SliderText::getUnit()
+{
+    return unit;
 }

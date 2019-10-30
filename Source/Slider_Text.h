@@ -13,19 +13,25 @@
 #include "PluginProcessor.h"
 
 class SliderText
-:   public Timer,
-    public Label
+:   public Label
 {
 public:
     
-    SliderText(MyDelayPluginAudioProcessor* inProcessor);
+    SliderText();
     ~SliderText();
     
 //    void paint(Graphics& g) override;
-    void timerCallback() override;
     void setParameterID(int inParameterID);
+    void setTextRange(float inMinVal, float inMaxVal);
+    void setUnit(String inString);
+    int getParameterID();
+    float getMinRange();
+    float getMaxRange();
+    String getUnit();
     
 private:
     int mParameterID;
-    MyDelayPluginAudioProcessor* mProcessor;
+    float minRange;
+    float maxRange;
+    String unit;
 };

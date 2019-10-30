@@ -52,14 +52,33 @@ void GainPanel::initSliderWithParameterID(MyDelayPluginAudioProcessor* inProcess
     addAndMakeVisible(mGainLabel.get());
     
     
-    mSliderText.reset(new SliderText(inProcessor));
+    mSliderText.reset(new SliderText());
     mSliderText->setParameterID(inParameterID);
+    mSliderText->setTextRange(-18.f, 18.f);
+    mSliderText->setUnit("dB");
     mSliderText->setFont(23.0f);
     mSliderText->setBounds(getWidth() * 0.5 - SLIDER_SIZE * 0.5,
                            SLIDER_POS_Y - SLIDER_SIZE * 0.32,
                            SLIDER_SIZE,
                            SLIDER_SIZE / 2);
     addAndMakeVisible(mSliderText.get());
+    
+    auto val = *(mProcessor->parameters.
+    getRawParameterValue(ParameterID[mSliderText->getParameterID()]));
+    val = jmap(val, mSliderText->getMinRange(), mSliderText->getMaxRange());
+    mSliderText->setText(String(val, 1) + mSliderText->getUnit(), dontSendNotification);
+    mSliderText->setJustificationType(Justification::centred);
+    
+    mSliderText->onTextChange = [this]{
+        mGainSlider->setValue(mSliderText->getText().getDoubleValue());
+    };
+    mGainSlider->onValueChange = [this]{
+        auto val = *(mProcessor->parameters.
+        getRawParameterValue(ParameterID[mSliderText->getParameterID()]));
+        val = jmap(val, mSliderText->getMinRange(), mSliderText->getMaxRange());
+        mSliderText->setText(String(val, 1) + mSliderText->getUnit(), dontSendNotification);
+        mSliderText->setJustificationType(Justification::centred);
+    };
 }
 
 void GainPanel::initVUMeter(MyDelayPluginAudioProcessor *inProcessor, int inParameterID)

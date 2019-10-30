@@ -26,7 +26,7 @@ public:
     
     void drawSlider(int x, int y, int parameterIndex);
     void drawSliderLabel(int x, int y, int parameterIndex);
-    void drawSliderText(MyDelayPluginAudioProcessor *inProcessor, int x, int y, int parameterIndex);
+    void drawSliderText(int x, int y, int parameterIndex, float minRange, float maxRange, String inUnit);
     
 private:
     

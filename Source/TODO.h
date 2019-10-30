@@ -12,11 +12,9 @@
 
 /*
  
- - Make the text editable to change the  parameter value
- - add the unit to each param text
+ - modifiy the text edit blank and rerange the input value
  - Smooth the VUMeter Level (RMS),
  - Added the Meter alert when overloading the level
- - Searching new UI patterns)
  - Possible refurbishing: phaser
  
 */
