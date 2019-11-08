@@ -29,6 +29,8 @@ public:
     float getMaxRange();
     String getUnit();
     
+    TextEditor* createEditorComponent() override;
+    
 private:
     int mParameterID;
     float minRange;

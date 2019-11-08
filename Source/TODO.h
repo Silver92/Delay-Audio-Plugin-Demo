@@ -11,10 +11,9 @@
 #pragma once
 
 /*
- 
- - modifiy the text edit blank and rerange the input value
- - Smooth the VUMeter Level (RMS),
- - Added the Meter alert when overloading the level
+ - ** random panning
+ - ** modifiy the text edit blank and rerange the input value
+ - ** Added the Meter alert when overloading the level
  - Possible refurbishing: phaser
  
 */

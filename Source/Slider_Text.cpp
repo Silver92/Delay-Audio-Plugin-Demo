@@ -68,3 +68,10 @@ String SliderText::getUnit()
 {
     return unit;
 }
+
+TextEditor* SliderText::createEditorComponent()
+{
+    TextEditor* textEditor = new TextEditor();
+    textEditor->setInputRestrictions(7, "0123456789.");
+    return textEditor;
+}

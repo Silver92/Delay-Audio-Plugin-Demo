@@ -175,6 +175,10 @@ void MyDelayPluginAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
                                      channelData,
                                      buffer.getNumSamples());
         
+        mInputGainRMS[channel] = buffer.getRMSLevel(channel,
+                                                    channelData[0],
+                                                    buffer.getNumSamples());
+        
         mDelay[channel]->process(channelData,
                                  delayTime,
                                  delayFeedback,
@@ -186,6 +190,10 @@ void MyDelayPluginAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
                                       outputGain,
                                       channelData,
                                       buffer.getNumSamples());
+        
+        mOutputGainRMS[channel] = buffer.getRMSLevel(channel,
+                                               channelData[0],
+                                               buffer.getNumSamples());
 
     }
 }
@@ -242,6 +250,18 @@ float MyDelayPluginAudioProcessor::getInputGainMeterLevel (int inChannel)
 float MyDelayPluginAudioProcessor::getOutputGainMeterLevel (int inChannel)
 {
     const float normalizeddB = dBToNormalizedGain(mOutputGain[inChannel]->getMeterLevel());
+    return normalizeddB;
+}
+
+float MyDelayPluginAudioProcessor::getInputRMSGainMeterLevel(int inChannel)
+{
+    const float normalizeddB = dBToNormalizedGain(mInputGainRMS[inChannel]);
+    return normalizeddB;
+}
+
+float MyDelayPluginAudioProcessor::getOutputRMSGainMeterLevel (int inChannel)
+{
+    const float normalizeddB = dBToNormalizedGain(mOutputGainRMS[inChannel]);
     return normalizeddB;
 }
 

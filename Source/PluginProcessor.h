@@ -62,6 +62,8 @@ public:
     //==============================================================================
     float getInputGainMeterLevel (int inChannel);
     float getOutputGainMeterLevel (int inChannel);
+    float getInputRMSGainMeterLevel (int inChannel);
+    float getOutputRMSGainMeterLevel (int inChannel);
     
     AudioProcessorValueTreeState parameters;
 
@@ -72,6 +74,8 @@ private:
     
     std::unique_ptr<Gain> mInputGain[2];
     std::unique_ptr<Gain> mOutputGain[2];
+    float mInputGainRMS[2];
+    float mOutputGainRMS[2];
     std::unique_ptr<Delay> mDelay[2];
     std::unique_ptr<PresetManager> mPresetManager;
     

@@ -13,7 +13,7 @@
 #include "JuceHeader.h"
 
 #define MAIN_PANEL_WIDTH    600
-#define MAIN_PANEL_HEIGHT   400
+#define MAIN_PANEL_HEIGHT   350
 
 #define GAIN_PANEL_WIDTH    MAIN_PANEL_WIDTH / 4
 #define GAIN_PANEL_HEIGHT   MAIN_PANEL_HEIGHT

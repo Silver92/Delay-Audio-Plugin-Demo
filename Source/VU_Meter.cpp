@@ -50,13 +50,13 @@ void VUMeter::timerCallback()
     switch (mParameterID) {
             
         case Parameter_InputGain:
-            updatedCh0Level = mProcessor->getInputGainMeterLevel(0);
-            updatedCh1Level = mProcessor->getInputGainMeterLevel(1);
+            updatedCh0Level = mProcessor->getInputRMSGainMeterLevel(0);
+            updatedCh1Level = mProcessor->getInputRMSGainMeterLevel(1);
             break;
             
         case Parameter_OutputGain:
-            updatedCh0Level = mProcessor->getOutputGainMeterLevel(0);
-            updatedCh1Level = mProcessor->getOutputGainMeterLevel(1);
+            updatedCh0Level = mProcessor->getOutputRMSGainMeterLevel(0);
+            updatedCh1Level = mProcessor->getOutputRMSGainMeterLevel(1);
             break;
             
     }

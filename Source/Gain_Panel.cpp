@@ -85,7 +85,7 @@ void GainPanel::initVUMeter(MyDelayPluginAudioProcessor *inProcessor, int inPara
 {
     mVUMeter.reset(new VUMeter(inProcessor));
     mVUMeter->setBounds(getWidth() * 0.5 - VUMETER_WIDTH * 1.05,
-                        SLIDER_POS_Y + SLIDER_SIZE,
+                        SLIDER_POS_Y + SLIDER_SIZE, 
                         SLIDER_SIZE,
                         getHeight() * 0.4);
     addAndMakeVisible(mVUMeter.get());
