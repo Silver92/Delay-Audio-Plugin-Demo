@@ -13,7 +13,7 @@
 #include "JuceHeader.h"
 
 #define MAIN_PANEL_WIDTH    600
-#define MAIN_PANEL_HEIGHT   350
+#define MAIN_PANEL_HEIGHT   300
 
 #define GAIN_PANEL_WIDTH    MAIN_PANEL_WIDTH / 4
 #define GAIN_PANEL_HEIGHT   MAIN_PANEL_HEIGHT
@@ -23,7 +23,7 @@
 
 #define SLIDER_SIZE         90
 #define SLIDER_POS_X        40
-#define SLIDER_POS_Y        70
-#define SLIDER_INTERVAL     40
+#define SLIDER_POS_Y        50
+#define SLIDER_INTERVAL     SLIDER_SIZE / 3
 
 #define VUMETER_WIDTH       SLIDER_SIZE / 3

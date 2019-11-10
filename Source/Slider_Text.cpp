@@ -72,6 +72,9 @@ String SliderText::getUnit()
 TextEditor* SliderText::createEditorComponent()
 {
     TextEditor* textEditor = new TextEditor();
-    textEditor->setInputRestrictions(7, "0123456789.");
+    textEditor->setInputRestrictions(7, "0123456789.-");
+    textEditor->setColour(ColourIds::backgroundColourId, Colours::black);
+    textEditor->setJustification(Justification::centred);
+    
     return textEditor;
 }
