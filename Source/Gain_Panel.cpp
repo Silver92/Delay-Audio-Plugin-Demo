@@ -70,7 +70,24 @@ void GainPanel::initSliderWithParameterID(MyDelayPluginAudioProcessor* inProcess
     mSliderText->setJustificationType(Justification::centred);
     
     mSliderText->onTextChange = [this]{
-        mGainSlider->setValue(mSliderText->getText().getDoubleValue());
+        auto maxVal = mSliderText->getMaxRange();
+        auto minVal = mSliderText->getMinRange();
+        auto currentVal = mSliderText->getText().getDoubleValue();
+        if      (currentVal >= maxVal)
+            mSliderText->setText(String(maxVal, 2) +
+                                     mSliderText->getUnit(),
+                                     dontSendNotification);
+        else if (currentVal <= minVal)
+            mSliderText->setText(String(minVal, 2) +
+                                     mSliderText->getUnit(),
+                                     dontSendNotification);
+        else    currentVal = jmap(currentVal,
+                               static_cast<double>(minVal),
+                               static_cast<double>(maxVal),
+                               mGainSlider->getMinimum(),
+                               mGainSlider->getMaximum());
+        
+        mGainSlider->setValue(currentVal);
     };
     mGainSlider->onValueChange = [this]{
         auto val = *(mProcessor->parameters.
