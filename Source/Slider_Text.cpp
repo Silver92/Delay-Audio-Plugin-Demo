@@ -75,8 +75,6 @@ TextEditor* SliderText::createEditorComponent()
     textEditor->setInputRestrictions(7, "0123456789.-");
     textEditor->setColour(ColourIds::backgroundColourId, Colours::black);
     textEditor->setJustification(Justification::centred);
-    textEditor->setFont(30);
-    textEditor->setIndents(0, 5);
     
     return textEditor;
 }

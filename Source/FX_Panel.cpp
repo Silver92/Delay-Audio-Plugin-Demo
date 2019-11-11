@@ -45,6 +45,7 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
     
     //=================================================================================
     
+    // Make the interactions between sliders and slider texts
     for (int i = 0; i < mSliders.size(); i++) {
         auto val = *(mProcessor->parameters.
         getRawParameterValue(ParameterID[mSliderTexts[i]->getParameterID()]));
@@ -83,6 +84,8 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
             mSliderTexts[i]->setText(tempString + mSliderTexts[i]->getUnit(), dontSendNotification);
             mSliderTexts[i]->setJustificationType(Justification::centred);
         };
+        
+        
     }
 }
 
@@ -122,7 +125,10 @@ void FXPanel::drawSliderText(int x, int y, int parameterIndex, float minRange, f
     text->setTextRange(minRange, maxRange);
     text->setUnit(inUnit);
     text->setFont(Font(23.0f));
-    text->setBounds(x, y - SLIDER_SIZE * 0.32, SLIDER_SIZE, SLIDER_SIZE / 2);
+    text->setBounds(x + SLIDER_SIZE * 0.1,
+                    y - SLIDER_SIZE / 4 + 5,
+                    SLIDER_SIZE * 0.8,
+                    SLIDER_SIZE / 4);
     addAndMakeVisible(text);
     mSliderTexts.add(text);
 }

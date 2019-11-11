@@ -57,10 +57,10 @@ void GainPanel::initSliderWithParameterID(MyDelayPluginAudioProcessor* inProcess
     mSliderText->setTextRange(-18.f, 18.f);
     mSliderText->setUnit("dB");
     mSliderText->setFont(23.0f);
-    mSliderText->setBounds(getWidth() * 0.5 - SLIDER_SIZE * 0.5,
-                           SLIDER_POS_Y - SLIDER_SIZE * 0.32,
-                           SLIDER_SIZE,
-                           SLIDER_SIZE / 2);
+    mSliderText->setBounds(getWidth() * 0.5 - SLIDER_SIZE * 0.4,
+                           SLIDER_POS_Y - SLIDER_SIZE / 4 + 5,
+                           SLIDER_SIZE * 0.8,
+                           SLIDER_SIZE / 4);
     addAndMakeVisible(mSliderText.get());
     
     auto val = *(mProcessor->parameters.
