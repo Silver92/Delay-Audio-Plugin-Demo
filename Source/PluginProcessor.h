@@ -81,6 +81,9 @@ private:
     
     int inputChannels = getTotalNumInputChannels();
     
+    AudioPlayHead* playHead;
+    AudioPlayHead::CurrentPositionInfo currentPositionInfo;
+    
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MyDelayPluginAudioProcessor)
 };
