@@ -4,7 +4,7 @@
 
 A delay audio plugin that can be deployed on most Digital Audio Workstations (DAW). 
 
-<img src="https://github.com/Silver92/My-Delay/blob/Develop/Sample Pictures/Screen Shot 2019-11-11 at 18.54.25.png" alt="Screen Shot 2019-11-11 at 18.54.25" style="zoom:50%;" />
+<img src="https://github.com/Silver92/My-Delay/blob/Develop/Sample Pictures/Screen Shot 2019-11-11 at 18.54.25.png" alt="Screen Shot 2019-11-11 at 18.54.25" style="zoom:30%;" />
 
 The user is able to make the delay effect by modifying 5 parameters:
 
@@ -32,19 +32,19 @@ A simple way to compile the project:
 
 3. Open the projucer in the Juce Framework folder then select the open button in the File panel, or select the "Open Existing Project" in the New Project guiding panel.
 
-   <img src="https://github.com/Silver92/My-Delay/blob/Develop/Sample Pictures/Screen Shot 2019-11-11 at 19.08.05.png" alt="Screen Shot 2019-11-11 at 19.08.05" style="zoom:50%;" />
+   <img src="https://github.com/Silver92/My-Delay/blob/Develop/Sample Pictures/Screen Shot 2019-11-11 at 19.08.05.png" alt="Screen Shot 2019-11-11 at 19.08.05" style="zoom:30%;" />
 
 4. Find the directory of the project and select the ".jucer" file
 
 5. Selected the exporter for the project based on the OS and click "save and open in IDE" button on the right side
 
-   <img src="https://github.com/Silver92/My-Delay/blob/Develop/Sample Pictures/Screen Shot 2019-11-11 at 19.08.24.png" alt="Screen Shot 2019-11-11 at 19.08.24" style="zoom:67%;" />
+   <img src="https://github.com/Silver92/My-Delay/blob/Develop/Sample Pictures/Screen Shot 2019-11-11 at 19.08.24.png" alt="Screen Shot 2019-11-11 at 19.08.24" style="zoom:40%;" />
 
 ## Other Questions
 
 The project is developed and tested under the Mac + Xcode environment. Users who compile in Windows OS may have following problems:
 
-<img src="https://github.com/Silver92/My-Delay/blob/Develop/Sample Pictures/Screen Shot 2019-11-11 at 19.20.16.png" alt="Screen Shot 2019-11-11 at 19.20.16" style="zoom:50%;" />
+<img src="https://github.com/Silver92/My-Delay/blob/Develop/Sample Pictures/Screen Shot 2019-11-11 at 19.20.16.png" alt="Screen Shot 2019-11-11 at 19.20.16" style="zoom:30%;" />
 
 1. There may be some lost path of the JUCE models
 
