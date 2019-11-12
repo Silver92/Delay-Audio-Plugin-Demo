@@ -55,30 +55,52 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
         mSliderTexts[i]->setText(tempString + mSliderTexts[i]->getUnit(), dontSendNotification);
         mSliderTexts[i]->setJustificationType(Justification::centred);
     
+        //=================================================================================
         mSliderTexts[i]->onTextChange = [this, i]{
             auto maxVal = mSliderTexts[i]->getMaxRange();
             auto minVal = mSliderTexts[i]->getMinRange();
-            auto currentVal = mSliderTexts[i]->getText().getDoubleValue();
-            if      (currentVal >= maxVal)
+            auto currentVal = mSliderTexts[i]->getText().getFloatValue();
+            if (currentVal >= maxVal) {
                 mSliderTexts[i]->setText(String(maxVal, 2) +
-                                         mSliderTexts[i]->getUnit(),
-                                         dontSendNotification);
-            else if (currentVal <= minVal)
+                mSliderTexts[i]->getUnit(),
+                dontSendNotification);
+            }
+            else if (currentVal <= minVal) {
                 mSliderTexts[i]->setText(String(minVal, 2) +
+                mSliderTexts[i]->getUnit(),
+                dontSendNotification);
+            }
+            else {
+                currentVal = jmap(currentVal,
+                minVal,
+                maxVal,
+                static_cast<float>(mSliders[i]->getMinimum()),
+                static_cast<float>(mSliders[i]->getMaximum()));
+            }
+            
+            if (mSliders[i]->getValue() == currentVal) {
+                auto tempVal = jmap(currentVal,
+                                    static_cast<float>(mSliders[i]->getMinimum()),
+                                    static_cast<float>(mSliders[i]->getMaximum()),
+                                    minVal,
+                                    maxVal);
+                String tempString = (mSliderTexts[i]->getParameterID() == Parameter_DelayTime) ?
+                String(tempVal, 2) : String(static_cast<int>(tempVal));
+                mSliderTexts[i]->setText(tempString +
                                          mSliderTexts[i]->getUnit(),
                                          dontSendNotification);
-            else    currentVal = jmap(currentVal,
-                                   static_cast<double>(minVal),
-                                   static_cast<double>(maxVal),
-                                   mSliders[i]->getMinimum(),
-                                   mSliders[i]->getMaximum());
+            }
             
             mSliders[i]->setValue(currentVal);
         };
+        
+        //=================================================================================
         mSliders[i]->onValueChange = [this, i]{
             auto val = *(mProcessor->parameters.
             getRawParameterValue(ParameterID[mSliderTexts[i]->getParameterID()]));
-            val = jmap(val, mSliderTexts[i]->getMinRange(), mSliderTexts[i]->getMaxRange());
+            val = jmap(val,
+                       mSliderTexts[i]->getMinRange(),
+                       mSliderTexts[i]->getMaxRange());
             String tempString = (mSliderTexts[i]->getParameterID() == Parameter_DelayTime) ?
             String(val, 2) : String(static_cast<int>(val));
             mSliderTexts[i]->setText(tempString + mSliderTexts[i]->getUnit(), dontSendNotification);

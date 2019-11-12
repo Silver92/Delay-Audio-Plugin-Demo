@@ -40,6 +40,7 @@ void GainPanel::initSliderWithParameterID(MyDelayPluginAudioProcessor* inProcess
                            SLIDER_SIZE);
     addAndMakeVisible(mGainSlider.get());
     
+    //=================================================================================
     mGainLabel.reset(new Label());
     mGainLabel->setFont(Font(18.0f));
     mGainLabel->setText(ParameterLabel[inParameterID], dontSendNotification);
@@ -51,7 +52,7 @@ void GainPanel::initSliderWithParameterID(MyDelayPluginAudioProcessor* inProcess
                           SLIDER_SIZE / 2);
     addAndMakeVisible(mGainLabel.get());
     
-    
+    //=================================================================================
     mSliderText.reset(new SliderText());
     mSliderText->setParameterID(inParameterID);
     mSliderText->setTextRange(-18.f, 18.f);
@@ -63,32 +64,51 @@ void GainPanel::initSliderWithParameterID(MyDelayPluginAudioProcessor* inProcess
                            SLIDER_SIZE / 4);
     addAndMakeVisible(mSliderText.get());
     
+    //=================================================================================
     auto val = *(mProcessor->parameters.
     getRawParameterValue(ParameterID[mSliderText->getParameterID()]));
     val = jmap(val, mSliderText->getMinRange(), mSliderText->getMaxRange());
     mSliderText->setText(String(val, 1) + mSliderText->getUnit(), dontSendNotification);
     mSliderText->setJustificationType(Justification::centred);
     
+    //=================================================================================
     mSliderText->onTextChange = [this]{
         auto maxVal = mSliderText->getMaxRange();
         auto minVal = mSliderText->getMinRange();
-        auto currentVal = mSliderText->getText().getDoubleValue();
-        if      (currentVal >= maxVal)
-            mSliderText->setText(String(maxVal, 2) +
-                                     mSliderText->getUnit(),
-                                     dontSendNotification);
-        else if (currentVal <= minVal)
-            mSliderText->setText(String(minVal, 2) +
-                                     mSliderText->getUnit(),
-                                     dontSendNotification);
-        else    currentVal = jmap(currentVal,
-                               static_cast<double>(minVal),
-                               static_cast<double>(maxVal),
-                               mGainSlider->getMinimum(),
-                               mGainSlider->getMaximum());
+        auto currentVal = mSliderText->getText().getFloatValue();
+        if      (currentVal >= maxVal) {
+            mSliderText->setText(String(maxVal, 1) +
+            mSliderText->getUnit(),
+            dontSendNotification);
+        }
+        else if (currentVal <= minVal) {
+            mSliderText->setText(String(minVal, 1) +
+            mSliderText->getUnit(),
+            dontSendNotification);
+        }
+        else {
+            currentVal = jmap(currentVal,
+            minVal,
+            maxVal,
+            static_cast<float>(mGainSlider->getMinimum()),
+            static_cast<float>(mGainSlider->getMaximum()));
+        }
         
+        if (mGainSlider->getValue() == currentVal) {
+            auto tempVal = jmap(currentVal,
+                                static_cast<float>(mGainSlider->getMinimum()),
+                                static_cast<float>(mGainSlider->getMaximum()),
+                                minVal,
+                                maxVal);
+            mSliderText->setText(String(tempVal, 1) +
+            mSliderText->getUnit(),
+            dontSendNotification);
+        }
+            
         mGainSlider->setValue(currentVal);
     };
+    
+    //=================================================================================
     mGainSlider->onValueChange = [this]{
         auto val = *(mProcessor->parameters.
         getRawParameterValue(ParameterID[mSliderText->getParameterID()]));
