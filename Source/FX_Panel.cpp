@@ -18,6 +18,7 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
     setSize(FX_PANEL_WIDTH, FX_PANEL_HEIGHT);
     
     //=================================================================================
+    // Set up the positions of the UI components
     
     int x = SLIDER_POS_X;
     int y = SLIDER_POS_Y;
@@ -26,9 +27,18 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
     drawSliderLabel(x, y, Parameter_DelayTime);
     drawSliderText(x, y, Parameter_DelayTime, 0.05f, 2.0f, "s");
     
+    mTimeSliderTypeComboBox.reset(
+    new ParameterComboBox(mProcessor->parameters, ParameterID[Parameter_TimeSliderType]));
+    mTimeSliderTypeComboBox->setBounds(x, y, SLIDER_SIZE, SLIDER_SIZE/2);
+    mTimeSliderTypeComboBox->addItem("TIME", 1);
+    mTimeSliderTypeComboBox->addItem("INTERVAL", 2);
+    auto index = mProcessor->getParameters().getUnchecked(Parameter_TimeSliderType);
+    mTimeSliderTypeComboBox->setSelectedItemIndex(index->getValue(), dontSendNotification);
+    addAndMakeVisible(mTimeSliderTypeComboBox.get());
+    
     //=================================================================================
     
-    x = x + SLIDER_SIZE + SLIDER_INTERVAL;
+    y = y + SLIDER_SIZE + SLIDER_INTERVAL;
     
     drawSlider(x, y, Parameter_DelayFeedback);
     drawSliderLabel(x, y, Parameter_DelayFeedback);
@@ -36,7 +46,6 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
     
     //=================================================================================
     
-    x = SLIDER_POS_X;
     y = y + SLIDER_SIZE + SLIDER_INTERVAL;
 
     drawSlider(x, y, Parameter_DelayDryWet);
@@ -46,7 +55,8 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
     //=================================================================================
     
     // Make the interactions between sliders and slider texts
-    for (int i = 0; i < mSliders.size(); i++) {
+    for (int i = 0; i < mSliders.size(); i++)
+    {
         auto val = *(mProcessor->parameters.
         getRawParameterValue(ParameterID[mSliderTexts[i]->getParameterID()]));
         val = jmap(val, mSliderTexts[i]->getMinRange(), mSliderTexts[i]->getMaxRange());
@@ -56,6 +66,8 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
         mSliderTexts[i]->setJustificationType(Justification::centred);
     
         //=================================================================================
+        // Set up the right text and the values on each slider text and slider when the user
+        // changes the slider text
         mSliderTexts[i]->onTextChange = [this, i]{
             auto maxVal = mSliderTexts[i]->getMaxRange();
             auto minVal = mSliderTexts[i]->getMinRange();
@@ -95,6 +107,8 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
         };
         
         //=================================================================================
+        // Set up the right text and the values on each slider text and slider when the user
+        // changes the sliders
         mSliders[i]->onValueChange = [this, i]{
             auto val = *(mProcessor->parameters.
             getRawParameterValue(ParameterID[mSliderTexts[i]->getParameterID()]));
@@ -109,6 +123,7 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
         
         
     }
+    
 }
 
 FXPanel::~FXPanel()
@@ -153,4 +168,9 @@ void FXPanel::drawSliderText(int x, int y, int parameterIndex, float minRange, f
                     SLIDER_SIZE / 4);
     addAndMakeVisible(text);
     mSliderTexts.add(text);
+}
+
+void FXPanel::comboBoxChanged(ComboBox* comboBoxThatHasChanged)
+{
+    
 }

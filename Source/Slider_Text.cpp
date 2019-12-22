@@ -27,12 +27,6 @@ SliderText::~SliderText()
     
 }
 
-//void SliderText::paint(Graphics& g)
-//{
-//    g.setColour(Colours::black);
-//    g.drawRect(0, 0, getWidth(), getHeight());
-//}
-
 void SliderText::setParameterID(int inParameterID)
 {
     mParameterID = inParameterID;

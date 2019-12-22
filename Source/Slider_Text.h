@@ -20,10 +20,10 @@ public:
     SliderText();
     ~SliderText();
     
-//    void paint(Graphics& g) override;
     void setParameterID(int inParameterID);
     void setTextRange(float inMinVal, float inMaxVal);
     void setUnit(String inString);
+    
     int getParameterID();
     float getMinRange();
     float getMaxRange();
@@ -36,4 +36,6 @@ private:
     float minRange;
     float maxRange;
     String unit;
+    
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SliderText);
 };

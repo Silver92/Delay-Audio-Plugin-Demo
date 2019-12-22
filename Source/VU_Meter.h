@@ -36,4 +36,6 @@ private:
     float mCh1Level;
     
     MyDelayPluginAudioProcessor* mProcessor;
+    
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(VUMeter);
 };
