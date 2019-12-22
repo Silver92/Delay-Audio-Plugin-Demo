@@ -15,9 +15,15 @@
 #include "Slider_Text.h"
 #include "ParameterComboBox.h"
 
+enum TimeSliderStyle
+{
+    TimeSliderStyle_Time,
+    TimeSliderStyle_Beat,
+    TimeSliderStyle_TotalNumStyles
+};
+
 class FXPanel
-:   public PanelBase,
-    public ComboBox::Listener
+:   public PanelBase
 {
 public:
     
@@ -30,7 +36,7 @@ public:
     void drawSliderLabel(int x, int y, int parameterIndex);
     void drawSliderText(int x, int y, int parameterIndex, float minRange, float maxRange, String inUnit);
     
-    void comboBoxChanged(ComboBox* comboBoxThatHasChanged) override;
+    void SetTimeSlider(TimeSliderStyle style);
     
 private:
     
@@ -38,5 +44,6 @@ private:
     OwnedArray<Label> mLabels;
     OwnedArray<SliderText> mSliderTexts;
     
+    TimeSliderStyle mTimeSliderStyle;
     std::unique_ptr<ParameterComboBox> mTimeSliderTypeComboBox;
 };

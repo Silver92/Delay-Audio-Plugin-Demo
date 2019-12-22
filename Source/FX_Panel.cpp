@@ -23,9 +23,7 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
     int x = SLIDER_POS_X;
     int y = SLIDER_POS_Y;
     
-    drawSlider(x, y, Parameter_DelayTime);
-    drawSliderLabel(x, y, Parameter_DelayTime);
-    drawSliderText(x, y, Parameter_DelayTime, 0.05f, 2.0f, "s");
+    SetTimeSlider(mTimeSliderStyle);
     
     mTimeSliderTypeComboBox.reset(
     new ParameterComboBox(mProcessor->parameters, ParameterID[Parameter_TimeSliderType]));
@@ -34,6 +32,10 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
     mTimeSliderTypeComboBox->addItem("INTERVAL", 2);
     auto index = mProcessor->getParameters().getUnchecked(Parameter_TimeSliderType);
     mTimeSliderTypeComboBox->setSelectedItemIndex(index->getValue(), dontSendNotification);
+    mTimeSliderTypeComboBox->onChange = [this]{
+        TimeSliderStyle style = (TimeSliderStyle)mTimeSliderTypeComboBox->getSelectedItemIndex();
+//        SetTimeSlider(style);
+    };
     addAndMakeVisible(mTimeSliderTypeComboBox.get());
     
     //=================================================================================
@@ -170,7 +172,27 @@ void FXPanel::drawSliderText(int x, int y, int parameterIndex, float minRange, f
     mSliderTexts.add(text);
 }
 
-void FXPanel::comboBoxChanged(ComboBox* comboBoxThatHasChanged)
-{
+void FXPanel::SetTimeSlider(TimeSliderStyle inStyle) {
     
+    mTimeSliderStyle = inStyle;
+    int x = SLIDER_POS_X;
+    int y = SLIDER_POS_Y;
+    
+    // clean the slider and slider text vectors
+    
+    
+    switch (inStyle) {
+        case (TimeSliderStyle_Time):{
+            drawSlider(x, y, Parameter_DelayTime);
+            drawSliderLabel(x, y, Parameter_DelayTime);
+            drawSliderText(x, y, Parameter_DelayTime, 0.05f, 2.0f, "s");
+        }break;
+        case (TimeSliderStyle_Beat):{
+            
+        }break;
+        default:
+        case (TimeSliderStyle_TotalNumStyles): {
+            jassertfalse;
+        }break;
+    }
 }
