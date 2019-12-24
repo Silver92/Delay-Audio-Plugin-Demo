@@ -13,7 +13,7 @@
 #include "Panel_Base.h"
 #include "Rotary_Slider.h"
 #include "Slider_Text.h"
-#include "ParameterComboBox.h"
+#include "ParameterButton.h"
 
 enum TimeSliderStyle
 {
@@ -45,5 +45,5 @@ private:
     OwnedArray<SliderText> mSliderTexts;
     
     TimeSliderStyle mTimeSliderStyle;
-    std::unique_ptr<ParameterComboBox> mTimeSliderTypeComboBox;
+    std::unique_ptr<ParameterButton> mTimeSliderTypeButton;
 };

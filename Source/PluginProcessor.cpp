@@ -22,14 +22,13 @@ MyDelayPluginAudioProcessor::MyDelayPluginAudioProcessor()
                        .withOutput ("Output", AudioChannelSet::stereo(), true)
                      #endif
                        ),
-parameters(*this,                               /** reference to processor **/
-           nullptr,                             /** null pointer to undoManager **/
-           juce::Identifier("Parameters"),      /** valueTree identifier **/
-           createParameterLayout())             /** initialize parameters **/
+        parameters(*this,                               /** reference to processor **/
+                   nullptr,                             /** null pointer to undoManager **/
+                   juce::Identifier("Parameters"),      /** valueTree identifier **/
+                   createParameterLayout())             /** initialize parameters **/
 #endif
 {
     initialization();
-    mPresetManager.reset(new PresetManager(this));
 }
 
 MyDelayPluginAudioProcessor::~MyDelayPluginAudioProcessor()
@@ -275,6 +274,8 @@ void MyDelayPluginAudioProcessor::initialization()
         mOutputGain[i].reset(new Gain());
         mDelay[i].reset(new Delay());
     }
+    
+    mPresetManager.reset(new PresetManager(this));
 }
 
 AudioProcessorValueTreeState::ParameterLayout MyDelayPluginAudioProcessor::createParameterLayout()
@@ -283,9 +284,9 @@ AudioProcessorValueTreeState::ParameterLayout MyDelayPluginAudioProcessor::creat
     using mParameter = AudioProcessorValueTreeState::Parameter;
     
     for (int i = 0; i < Parameter_TotalNumParameters; i++){
-        params.push_back(std::make_unique<mParameter>(ParameterID[i],
-                                                      ParameterID[i],
-                                                      ParameterLabel[i],
+        params.push_back(std::make_unique<mParameter>(ParameterID[i],                           /**Parameter ID*/
+                                                      ParameterID[i],                           /**Parameter Name*/
+                                                      ParameterLabel[i],                        /**labelText*/
                                                       NormalisableRange<float>(0.0f, 1.0f),
                                                       ParameterDefaultVal[i],
                                                       nullptr,

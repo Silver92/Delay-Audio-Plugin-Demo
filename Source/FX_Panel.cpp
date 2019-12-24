@@ -9,7 +9,6 @@
 */
 
 #include "FX_Panel.h"
-
 #include "Panel_Base.h"
 
 FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
@@ -23,20 +22,46 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
     int x = SLIDER_POS_X;
     int y = SLIDER_POS_Y;
     
-    SetTimeSlider(mTimeSliderStyle);
+//    SetTimeSlider(mTimeSliderStyle);
     
-    mTimeSliderTypeComboBox.reset(
-    new ParameterComboBox(mProcessor->parameters, ParameterID[Parameter_TimeSliderType]));
-    mTimeSliderTypeComboBox->setBounds(x, y, SLIDER_SIZE, SLIDER_SIZE/2);
-    mTimeSliderTypeComboBox->addItem("TIME", 1);
-    mTimeSliderTypeComboBox->addItem("INTERVAL", 2);
+    mTimeSliderTypeButton.reset(
+    new ParameterButton(mProcessor->parameters, ParameterID[Parameter_TimeSliderType]));
+    mTimeSliderTypeButton->setBounds(x + SLIDER_SIZE + SLIDER_INTERVAL,
+                                     y - SLIDER_SIZE/5,
+                                     SLIDER_SIZE,
+                                     SLIDER_SIZE);
     auto index = mProcessor->getParameters().getUnchecked(Parameter_TimeSliderType);
-    mTimeSliderTypeComboBox->setSelectedItemIndex(index->getValue(), dontSendNotification);
-    mTimeSliderTypeComboBox->onChange = [this]{
-        TimeSliderStyle style = (TimeSliderStyle)mTimeSliderTypeComboBox->getSelectedItemIndex();
-//        SetTimeSlider(style);
+    mTimeSliderTypeButton->setButtonState(index->getValue());
+    mTimeSliderTypeButton->onClick = [this, x, y]{
+        
+        if (mTimeSliderTypeButton->getButtonState()) {
+            // Delete the previous button
+            if (!mSliders.isEmpty()) {
+                for (int i = 0; i < mSliders.size(); i++) {
+                    if (mSliders[i]->getName() ==
+                        ParameterID[Parameter_DelayTime]) {
+                        
+                    }
+                }
+            }
+            
+        } else {
+            // Delete the previous button
+            if (!mSliders.isEmpty()) {
+                for (int i = 0; i < mSliders.size(); i++) {
+                    if (mSliders[i]->getName() ==
+                        ParameterID[Parameter_DelayTime]) {
+                        mSliders.remove(i);
+                        mSliderTexts.remove(i);
+                    }
+                }
+            }
+            drawSlider(x, y, Parameter_DelayTime);
+            drawSliderText(x, y, Parameter_DelayTime, 0.05f, 2.0f, "s");
+        }
     };
-    addAndMakeVisible(mTimeSliderTypeComboBox.get());
+    addAndMakeVisible(mTimeSliderTypeButton.get());
+    drawSliderLabel(x, y, Parameter_DelayTime);
     
     //=================================================================================
     
@@ -48,7 +73,7 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
     
     //=================================================================================
     
-    y = y + SLIDER_SIZE + SLIDER_INTERVAL;
+    x = x + SLIDER_SIZE + SLIDER_INTERVAL;
 
     drawSlider(x, y, Parameter_DelayDryWet);
     drawSliderLabel(x, y, Parameter_DelayDryWet);

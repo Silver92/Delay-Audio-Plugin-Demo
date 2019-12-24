@@ -18,10 +18,10 @@
     </GROUP>
     <GROUP id="{C2F5F5D6-DF9C-DF8C-6B49-210E798C8548}" name="UI">
       <GROUP id="{1C0FCBCF-ECC3-8046-BC98-6CC8FBFFF532}" name="Components">
-        <FILE id="gVAUsx" name="ParameterComboBox.cpp" compile="1" resource="0"
-              file="Source/ParameterComboBox.cpp"/>
-        <FILE id="JEcpeM" name="ParameterComboBox.h" compile="0" resource="0"
-              file="Source/ParameterComboBox.h"/>
+        <FILE id="gVAUsx" name="ParameterButton.cpp" compile="1" resource="0"
+              file="Source/ParameterButton.cpp"/>
+        <FILE id="JEcpeM" name="ParameterButton.h" compile="0" resource="0"
+              file="Source/ParameterButton.h"/>
         <FILE id="H1wfXE" name="Rotary_Slider.cpp" compile="1" resource="0"
               file="Source/Rotary_Slider.cpp"/>
         <FILE id="D62z9K" name="Rotary_Slider.h" compile="0" resource="0" file="Source/Rotary_Slider.h"/>
