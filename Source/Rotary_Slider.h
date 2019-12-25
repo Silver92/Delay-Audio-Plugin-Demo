@@ -23,6 +23,8 @@ public:
     
     ~RotarySlider();
     
+    void setInterval();
+    
 private:
     
     std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mAttachment;

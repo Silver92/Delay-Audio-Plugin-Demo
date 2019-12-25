@@ -32,18 +32,19 @@ public:
     
     void paint(Graphics& g) override;
     
-    void drawSlider(int x, int y, int parameterIndex);
+    void drawSlider(int x, int y, int parameterIndex, float minRange,
+                    float maxRange, String inUnit);
     void drawSliderLabel(int x, int y, int parameterIndex);
-    void drawSliderText(int x, int y, int parameterIndex, float minRange, float maxRange, String inUnit);
     
-    void SetTimeSlider(TimeSliderStyle style);
+    void drawIntervalSlider(int x, int y, int parameterIndex, float minRange,
+                            float maxRange, String inUnit);
     
 private:
     
     OwnedArray<RotarySlider> mSliders;
     OwnedArray<Label> mLabels;
     OwnedArray<SliderText> mSliderTexts;
+    std::unique_ptr<ComboBox> mBeatSliderBox;
     
-    TimeSliderStyle mTimeSliderStyle;
     std::unique_ptr<ParameterButton> mTimeSliderTypeButton;
 };

@@ -10,24 +10,15 @@
 
 #include "ParameterButton.h"
 
-ParameterButton::ParameterButton(AudioProcessorValueTreeState& stateControl, const String& parameterID)
-:   juce::TextButton(parameterID)
+ParameterButton::ParameterButton(AudioProcessorValueTreeState& stateControl, int parameterName)
+:   juce::TextButton(ParameterLabel[parameterName])
 {
-    mAttachment.reset(new AudioProcessorValueTreeState::ButtonAttachment(stateControl, parameterID, *this));
-    buttonState = false;
+    mAttachment.reset(new AudioProcessorValueTreeState::ButtonAttachment(stateControl,
+                                                                         ParameterID[parameterName],
+                                                                         *this));
 }
 
 ParameterButton::~ParameterButton()
 {
     
-}
-
-void ParameterButton::setButtonState(bool inState)
-{
-    buttonState = inState;
-}
-
-bool ParameterButton::getButtonState()
-{
-    return buttonState;
 }

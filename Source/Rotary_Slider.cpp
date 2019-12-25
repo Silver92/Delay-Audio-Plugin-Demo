@@ -19,10 +19,17 @@ RotarySlider::RotarySlider(AudioProcessorValueTreeState& stateToControl,
     setTextBoxStyle(Slider::NoTextBox, false, SLIDER_SIZE, SLIDER_SIZE / 3);
     setRange(0.0f, 1.0f, 0.001f);
     mAttachment.reset(
-    new AudioProcessorValueTreeState::SliderAttachment(stateToControl, ParameterID[parameterName], *this));
+    new AudioProcessorValueTreeState::SliderAttachment(stateToControl,
+                                                       ParameterID[parameterName],
+                                                       *this));
 }
 
 RotarySlider::~RotarySlider()
 {
     
+}
+
+void RotarySlider::setInterval()
+{
+    setRange(0.0f, 1.0f, 1.f/ 13.f);
 }

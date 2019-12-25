@@ -163,6 +163,9 @@ void MyDelayPluginAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
     // Alternatively, you can process the samples with the channels
     // interleaved by keeping the same state.
     
+    playHead = this->getPlayHead();
+    playHead->getCurrentPosition(currentPositionInfo);
+    
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
         auto* channelData = buffer.getWritePointer (channel);
