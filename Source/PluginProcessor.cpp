@@ -171,6 +171,7 @@ void MyDelayPluginAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
         auto* channelData = buffer.getWritePointer (channel);
         auto inputGain = *parameters.getRawParameterValue(ParameterID[Parameter_InputGain]);
         auto delayTime = *parameters.getRawParameterValue(ParameterID[Parameter_DelayTime]);
+        auto delayType = *parameters.getRawParameterValue(ParameterID[Parameter_TimeSliderType]);
         auto delayFeedback = *parameters.getRawParameterValue(ParameterID[Parameter_DelayFeedback]);
         auto delayDryWet = *parameters.getRawParameterValue(ParameterID[Parameter_DelayDryWet]);
         auto outputGain = *parameters.getRawParameterValue(ParameterID[Parameter_OutputGain]);
@@ -183,6 +184,15 @@ void MyDelayPluginAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
         mInputGainRMS[channel] = buffer.getRMSLevel(channel,
                                                     channelData[0],
                                                     buffer.getNumSamples());
+        
+        if (delayType) {
+            delayTime = NoteTypeValue[static_cast<int>(delayTime * NoteType_TotalNumNoteTypes)]
+                        / currentPositionInfo.bpm;
+            delayTime = jlimit(0.05f, 2.0f, delayTime);
+        }
+        else {
+            delayTime = jmap(delayTime, 0.0f, 1.0f, 0.05f, 2.0f);
+        }
         
         mDelay[channel]->process(channelData,
                                  delayTime,

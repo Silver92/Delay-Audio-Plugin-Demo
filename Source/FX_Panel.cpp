@@ -30,20 +30,23 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
                                      SLIDER_SIZE);
     
     auto index = mProcessor->getParameters().getUnchecked(Parameter_TimeSliderType);
-    mTimeSliderTypeButton->setToggleState(index->getValue(), dontSendNotification);
-    
-    if (!mTimeSliderTypeButton->getToggleState()) {
+
+    if (index->getValue()) {
         drawIntervalSlider(x, y, Parameter_DelayTime, 0.0f, 1.0f, "s");
         mTimeSliderTypeButton->setButtonText("Beat Mode");
-        mTimeSliderTypeButton->setToggleState(true, dontSendNotification);
+        mTimeSliderTypeButton->setToggleState(false, dontSendNotification);
+        std::cout << "init " << mTimeSliderTypeButton->getToggleState() << std::endl;
+        std::cout << "parameter value " << (mProcessor->getParameters().getUnchecked(Parameter_TimeSliderType)->getValue()) << std::endl;
     } else {
         drawSlider(x, y, Parameter_DelayTime, 0.05f, 2.0f, "s");
         mTimeSliderTypeButton->setButtonText("Time Mode");
-        mTimeSliderTypeButton->setToggleState(false, dontSendNotification);
+        mTimeSliderTypeButton->setToggleState(true, dontSendNotification);
+        std::cout << "init " << mTimeSliderTypeButton->getToggleState() << std::endl;
+        std::cout << "parameter value " << (mProcessor->getParameters().getUnchecked(Parameter_TimeSliderType)->getValue()) << std::endl;
     }
     
     mTimeSliderTypeButton->onClick = [this, x, y]{
-        if (!mTimeSliderTypeButton->getToggleState()) {
+        if (mTimeSliderTypeButton->getToggleState()) {
             for (int i = 0; i < mSliders.size(); i++) {
                 if (mSliders[i]->getName() ==
                     ParameterID[Parameter_DelayTime]) {
@@ -54,7 +57,9 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
             }
             drawIntervalSlider(x, y, Parameter_DelayTime, 0.0f, 1.0f, "s");
             mTimeSliderTypeButton->setButtonText("Beat Mode");
-            mTimeSliderTypeButton->setToggleState(true, dontSendNotification);
+            mTimeSliderTypeButton->setToggleState(false, dontSendNotification);
+            std::cout << mTimeSliderTypeButton->getToggleState() << std::endl;
+            std::cout << "parameter value " << (mProcessor->getParameters().getUnchecked(Parameter_TimeSliderType)->getValue()) << std::endl;
         } else {
             for (int i = 0; i < mSliders.size(); i++) {
                 if (mSliders[i]->getName() ==
@@ -66,7 +71,9 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
             }
             drawSlider(x, y, Parameter_DelayTime, 0.05f, 2.0f, "s");
             mTimeSliderTypeButton->setButtonText("Time Mode");
-            mTimeSliderTypeButton->setToggleState(false, dontSendNotification);
+            mTimeSliderTypeButton->setToggleState(true, dontSendNotification);
+            std::cout << mTimeSliderTypeButton->getToggleState() << std::endl;
+            std::cout << "parameter value " << (mProcessor->getParameters().getUnchecked(Parameter_TimeSliderType)->getValue()) << std::endl;
         }
     };
     addAndMakeVisible(mTimeSliderTypeButton.get());
