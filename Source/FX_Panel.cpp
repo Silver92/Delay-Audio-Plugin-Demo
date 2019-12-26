@@ -30,19 +30,16 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
                                      SLIDER_SIZE);
     
     auto index = mProcessor->getParameters().getUnchecked(Parameter_TimeSliderType);
-
-    if (index->getValue()) {
+    mTimeSliderTypeButton->setToggleState(index, dontSendNotification);
+    
+    if (!(index->getValue())) {
         drawIntervalSlider(x, y, Parameter_DelayTime, 0.0f, 1.0f, "s");
         mTimeSliderTypeButton->setButtonText("Beat Mode");
         mTimeSliderTypeButton->setToggleState(false, dontSendNotification);
-        std::cout << "init " << mTimeSliderTypeButton->getToggleState() << std::endl;
-        std::cout << "parameter value " << (mProcessor->getParameters().getUnchecked(Parameter_TimeSliderType)->getValue()) << std::endl;
     } else {
         drawSlider(x, y, Parameter_DelayTime, 0.05f, 2.0f, "s");
         mTimeSliderTypeButton->setButtonText("Time Mode");
         mTimeSliderTypeButton->setToggleState(true, dontSendNotification);
-        std::cout << "init " << mTimeSliderTypeButton->getToggleState() << std::endl;
-        std::cout << "parameter value " << (mProcessor->getParameters().getUnchecked(Parameter_TimeSliderType)->getValue()) << std::endl;
     }
     
     mTimeSliderTypeButton->onClick = [this, x, y]{
@@ -58,8 +55,6 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
             drawIntervalSlider(x, y, Parameter_DelayTime, 0.0f, 1.0f, "s");
             mTimeSliderTypeButton->setButtonText("Beat Mode");
             mTimeSliderTypeButton->setToggleState(false, dontSendNotification);
-            std::cout << mTimeSliderTypeButton->getToggleState() << std::endl;
-            std::cout << "parameter value " << (mProcessor->getParameters().getUnchecked(Parameter_TimeSliderType)->getValue()) << std::endl;
         } else {
             for (int i = 0; i < mSliders.size(); i++) {
                 if (mSliders[i]->getName() ==
@@ -72,8 +67,6 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
             drawSlider(x, y, Parameter_DelayTime, 0.05f, 2.0f, "s");
             mTimeSliderTypeButton->setButtonText("Time Mode");
             mTimeSliderTypeButton->setToggleState(true, dontSendNotification);
-            std::cout << mTimeSliderTypeButton->getToggleState() << std::endl;
-            std::cout << "parameter value " << (mProcessor->getParameters().getUnchecked(Parameter_TimeSliderType)->getValue()) << std::endl;
         }
     };
     addAndMakeVisible(mTimeSliderTypeButton.get());
@@ -132,11 +125,37 @@ void FXPanel::drawSlider(int x,
     // Denote the default values
     auto val = *(mProcessor->parameters.
     getRawParameterValue(ParameterID[text->getParameterID()]));
-    val = jmap(val, text->getMinRange(), text->getMaxRange());
-    String tempString = (text->getParameterID() == Parameter_DelayTime) ?
-    String(val, 2) : String(static_cast<int>(val));
-    text->setText(tempString + text->getUnit(), dontSendNotification);
-    text->setJustificationType(Justification::centred);
+    auto timeSliderType = mProcessor->getParameters().
+    getUnchecked(Parameter_TimeSliderType)->getValue();
+    
+    std::cout << "parameter index " << parameterIndex << std::endl;
+    std::cout << "parameter value in processor " << timeSliderType<< std::endl;
+    
+    if (parameterIndex == Parameter_DelayTime && !timeSliderType)
+    {
+        std::cout << "slider val = " << val << std::endl;
+        std::cout << "slider val = " << static_cast<int>(val * (NoteType_TotalNumNoteTypes - 1 )) << std::endl;
+        val = NoteTypeValue[static_cast<int>(val * (NoteType_TotalNumNoteTypes - 1))]
+                    / (mProcessor->currentPositionInfo.bpm);
+        std::cout << "slider val = " << val << std::endl;
+        val = jlimit(0.05f, 2.0f, val);
+        std::cout << "slider val = " << val << std::endl;
+        String tempString = String(val, 2);
+        text->setText(tempString + text->getUnit(), dontSendNotification);
+        text->setJustificationType(Justification::centred);
+        
+        val = jmap(val, 0.05f, 2.0f, 0.f, 1.f);
+        std::cout << "slider val = " << val << std::endl;
+        slider->setValue(val);
+    }
+    else
+    {
+        val = jmap(val, text->getMinRange(), text->getMaxRange());
+        String tempString = (text->getParameterID() == Parameter_DelayTime) ?
+        String(val, 2) : String(static_cast<int>(val));
+        text->setText(tempString + text->getUnit(), dontSendNotification);
+        text->setJustificationType(Justification::centred);
+    }
     
     // Set up the right text and the values on each slider text and slider when the user
     // changes the slider text
@@ -231,7 +250,37 @@ void FXPanel::drawIntervalSlider(int x, int y, int parameterIndex, float minRang
     // Denote the default values
     auto val = *(mProcessor->parameters.
     getRawParameterValue(ParameterID[parameterIndex]));
-    mBeatSliderBox->setSelectedItemIndex(val * 13);
+    auto timeSliderType = mProcessor->getParameters().
+    getUnchecked(Parameter_TimeSliderType)->getValue();
+    
+    std::cout << "parameter index " << parameterIndex << std::endl;
+    std::cout << "parameter value in processor " << timeSliderType<< std::endl;
+    
+    if (timeSliderType)
+    {
+        // refresh the slider and text according to the input
+        std::cout << "val " << val << std::endl;
+        val = jmap(val, 0.f, 1.f, 0.05f, 2.f);
+        val = val * (mProcessor->currentPositionInfo.bpm);
+        std::cout << "val " << val << std::endl;
+        float minimum = 10000;
+        int index = 0;
+        auto tmp = 0;
+        for (int i = 0; i < NoteType_TotalNumNoteTypes; i++) {
+            tmp = abs(val - NoteTypeValue[i]);
+            std::cout << "difference = " << tmp << std::endl;
+            if (tmp < minimum) {
+                index = i;
+                minimum = tmp;
+            }
+        }
+        mBeatSliderBox->setSelectedItemIndex(index);
+        slider->setValue(index / static_cast<float> (NoteType_TotalNumNoteTypes - 1));
+    }
+    else
+    {
+        mBeatSliderBox->setSelectedItemIndex(val * static_cast<float> (NoteType_TotalNumNoteTypes - 1));
+    }
     
     //=================================================================================
     // Set up the right text and the values on each slider text and slider when the user
@@ -239,13 +288,13 @@ void FXPanel::drawIntervalSlider(int x, int y, int parameterIndex, float minRang
     slider->onValueChange = [this, parameterIndex]{
         auto val = *(mProcessor->parameters.
         getRawParameterValue(ParameterID[parameterIndex]));
-        mBeatSliderBox->setSelectedItemIndex(val * 13);
+        mBeatSliderBox->setSelectedItemIndex(val * (NoteType_TotalNumNoteTypes - 1));
     };
     
     // Set up the right text and the values on each slider text and slider when the user
     // changes the slider text
     mBeatSliderBox->onChange = [this, slider]{
         auto currentVal = mBeatSliderBox->getSelectedItemIndex();
-        slider->setValue(currentVal / 13.f);
+        slider->setValue(currentVal / static_cast<float> (NoteType_TotalNumNoteTypes - 1));
     };
 }
