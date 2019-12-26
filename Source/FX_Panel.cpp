@@ -30,9 +30,10 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
                                      SLIDER_SIZE);
     
     auto index = mProcessor->getParameters().getUnchecked(Parameter_TimeSliderType);
-    mTimeSliderTypeButton->setToggleState(index, dontSendNotification);
+    mTimeSliderTypeButton->setToggleState(index->getValue(), dontSendNotification);
+    std::cout << mTimeSliderTypeButton->getToggleState() << std::endl;
     
-    if (!(index->getValue())) {
+    if (index->getValue()) {
         drawIntervalSlider(x, y, Parameter_DelayTime, 0.0f, 1.0f, "s");
         mTimeSliderTypeButton->setButtonText("Beat Mode");
         mTimeSliderTypeButton->setToggleState(false, dontSendNotification);
@@ -52,9 +53,9 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
                     mLabels.remove(i);
                 }
             }
+            mTimeSliderTypeButton->setToggleState(false, dontSendNotification);
             drawIntervalSlider(x, y, Parameter_DelayTime, 0.0f, 1.0f, "s");
             mTimeSliderTypeButton->setButtonText("Beat Mode");
-            mTimeSliderTypeButton->setToggleState(false, dontSendNotification);
         } else {
             for (int i = 0; i < mSliders.size(); i++) {
                 if (mSliders[i]->getName() ==
@@ -64,9 +65,9 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
                     mLabels.remove(i);
                 }
             }
+            mTimeSliderTypeButton->setToggleState(true, dontSendNotification);
             drawSlider(x, y, Parameter_DelayTime, 0.05f, 2.0f, "s");
             mTimeSliderTypeButton->setButtonText("Time Mode");
-            mTimeSliderTypeButton->setToggleState(true, dontSendNotification);
         }
     };
     addAndMakeVisible(mTimeSliderTypeButton.get());
@@ -125,13 +126,11 @@ void FXPanel::drawSlider(int x,
     // Denote the default values
     auto val = *(mProcessor->parameters.
     getRawParameterValue(ParameterID[text->getParameterID()]));
-    auto timeSliderType = mProcessor->getParameters().
-    getUnchecked(Parameter_TimeSliderType)->getValue();
+    auto toggleState = mTimeSliderTypeButton->getToggleState();
     
-    std::cout << "parameter index " << parameterIndex << std::endl;
-    std::cout << "parameter value in processor " << timeSliderType<< std::endl;
+    std::cout << "toggle state " << toggleState << std::endl;
     
-    if (parameterIndex == Parameter_DelayTime && !timeSliderType)
+    if (parameterIndex == Parameter_DelayTime && toggleState)
     {
         std::cout << "slider val = " << val << std::endl;
         std::cout << "slider val = " << static_cast<int>(val * (NoteType_TotalNumNoteTypes - 1 )) << std::endl;
@@ -250,13 +249,11 @@ void FXPanel::drawIntervalSlider(int x, int y, int parameterIndex, float minRang
     // Denote the default values
     auto val = *(mProcessor->parameters.
     getRawParameterValue(ParameterID[parameterIndex]));
-    auto timeSliderType = mProcessor->getParameters().
-    getUnchecked(Parameter_TimeSliderType)->getValue();
+    auto toggleState = mTimeSliderTypeButton->getToggleState();
     
-    std::cout << "parameter index " << parameterIndex << std::endl;
-    std::cout << "parameter value in processor " << timeSliderType<< std::endl;
+    std::cout << "toggle state " << toggleState << std::endl;
     
-    if (timeSliderType)
+    if (!toggleState)
     {
         // refresh the slider and text according to the input
         std::cout << "val " << val << std::endl;
@@ -268,7 +265,6 @@ void FXPanel::drawIntervalSlider(int x, int y, int parameterIndex, float minRang
         auto tmp = 0;
         for (int i = 0; i < NoteType_TotalNumNoteTypes; i++) {
             tmp = abs(val - NoteTypeValue[i]);
-            std::cout << "difference = " << tmp << std::endl;
             if (tmp < minimum) {
                 index = i;
                 minimum = tmp;
