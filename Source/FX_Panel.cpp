@@ -263,9 +263,9 @@ void FXPanel::drawIntervalSlider(int x, int y, int parameterIndex, float minRang
     
     // Draw the slider text
     mBeatSliderBox.reset(new ComboBox());
-    mBeatSliderBox->setBounds(x + SLIDER_SIZE * 0.1,
+    mBeatSliderBox->setBounds(x - SLIDER_SIZE * 0.1,
                               y - SLIDER_SIZE / 4 + 5,
-                              SLIDER_SIZE * 0.8,
+                              SLIDER_SIZE * 1.2,
                               SLIDER_SIZE / 4);
     for (int i = 0; i < NoteType_TotalNumNoteTypes; i++) {
         mBeatSliderBox->addItem(NoteTypeLabel[i], i+1);
