@@ -30,6 +30,7 @@ public:
     FXPanel(MyDelayPluginAudioProcessor* inProcessor);
     ~FXPanel();
     
+private:
     void paint(Graphics& g) override;
     
     void drawSlider(int x, int y, int parameterIndex, float minRange,
@@ -47,4 +48,5 @@ private:
     std::unique_ptr<ComboBox> mBeatSliderBox;
     
     std::unique_ptr<ParameterButton> mTimeSliderTypeButton;
+    std::unique_ptr<BubbleMessageComponent> bubbleMessage;
 };

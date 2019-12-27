@@ -44,6 +44,32 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
     }
     
     mTimeSliderTypeButton->onClick = [this, x, y]{
+        
+        if (mProcessor->currentPositionInfo.bpm < 0) {
+            
+            bubbleMessage.reset(new BubbleMessageComponent());
+            bubbleMessage->setAlwaysOnTop(true);
+            bubbleMessage->setAllowedPlacement(BubbleComponent::
+                                               BubblePlacement::below);
+            bubbleMessage->setColour(BubbleMessageComponent::
+                                     ColourIds::backgroundColourId,
+                                     Colours::whitesmoke);
+            this->addChildComponent(bubbleMessage.get());
+            
+            AttributedString text ("Need to start playback first "
+            "to do the time/beat convertion!");
+            text.setJustification (Justification::centred);
+            text.setColour (mTimeSliderTypeButton->findColour
+                            (TextButton::textColourOffId));
+            
+            Rectangle<int> position(mTimeSliderTypeButton->getX() - 15,
+                                    mTimeSliderTypeButton->getY(),
+                                    mTimeSliderTypeButton->getWidth(),
+                                    mTimeSliderTypeButton->getHeight());
+            bubbleMessage->showAt(mTimeSliderTypeButton->getBounds(), text, 5000);
+            return;
+        }
+        
         if (mTimeSliderTypeButton->getToggleState()) {
             for (int i = 0; i < mSliders.size(); i++) {
                 if (mSliders[i]->getName() ==

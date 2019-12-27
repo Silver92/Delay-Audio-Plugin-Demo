@@ -286,6 +286,7 @@ void MyDelayPluginAudioProcessor::initialization()
     }
     
     mPresetManager.reset(new PresetManager(this));
+    currentPositionInfo.bpm = -1;
 }
 
 AudioProcessorValueTreeState::ParameterLayout MyDelayPluginAudioProcessor::createParameterLayout()
