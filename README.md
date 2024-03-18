@@ -2,7 +2,7 @@
 
 ## Introduction
 
-A delay audio plugin that can be deployed on most Digital Audio Workstations (DAW).  The plugin supports the alignment from the delay time to the exact beat time (in seconds). This helps the user try their optimal delay beats and save the calculation time for the beats alignments by simply clicking the delay time mode button.
+A delay audio plugin that can be deployed on most Digital Audio Workstations (DAW).  The plugin supports the alignment from the delay time to the exact beat time (in seconds). This helps the users to try their optimal delay beats and save the calculation time for the beats alignments by simply clicking the delay time mode button.
 
 <img src="https://github.com/Silver92/My-Delay/blob/Develop/Sample%20Pictures/Screen%20Shot%202020-01-14%20at%2020.03.50.png" style="zoom:30%" align="center"/>
 
@@ -10,17 +10,17 @@ A delay audio plugin that can be deployed on most Digital Audio Workstations (DA
 
 The user is able to make the delay effect by modifying 5 parameters:
 
-Input:		A parameter to adjust the input signal level in dBFS.
+Input: A parameter to adjust the input signal level in dBFS.
 
-Time:		A parameter to adjust the delay time for the delay signal.
+Time:	A parameter to adjust the delay time for the delay signal.
 
-Time Mode Button:  A button to align the delay time to the exact beat time or to turn the beat time to continuous time value
+Time Mode Button: A button to align the delay time to the exact beat time or to turn the beat time to continuous time value
 
-Feedback: 	A parameter to adjust the damping factor of the delay signal.
+Feedback: A parameter to adjust the damping factor of the delay signal.
 
-Dry/Wet: 	A parameter to adjust the dry/wet ratio of the output signal.
+Dry/Wet: A parameter to adjust the dry/wet ratio of the output signal.
 
-Output: 		A parameter to adjust the output signal level in dBFS.
+Output: A parameter to adjust the output signal level in dBFS.
 
 ## Compile the Project
 
