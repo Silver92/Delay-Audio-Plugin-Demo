@@ -20,9 +20,13 @@ const Colour Colour_5 = Colour(105, 105, 105).withAlpha(0.3f);
 const Colour Colour_6 = Colour(0, 0, 0).withAlpha(0.8f);
 const Colour Colour_7 = Colour(125, 125, 125);
 
-const Font font_1 ("Helvetica Neue", 12.00f, Font::bold);
-const Font font_2 ("Helvetica Neue", 22.00f, Font::bold);
-const Font font_3 ("Helvetica Neue", 48.00f, Font::bold);
+//const Font font_1 ("Helvetica Neue", 12.00f, Font::bold);
+//const Font font_2 ("Helvetica Neue", 22.00f, Font::bold);
+//const Font font_3 ("Helvetica Neue", 48.00f, Font::bold);
+
+const Font font_1(12.00f, Font::bold);
+const Font font_2(22.00f, Font::bold);
+const Font font_3(48.00f, Font::bold);
 
 class MyLookAndFeel
 :   public LookAndFeel_V4

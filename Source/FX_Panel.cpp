@@ -73,7 +73,7 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
         if (mTimeSliderTypeButton->getToggleState()) {
             for (int i = 0; i < mSliders.size(); i++) {
                 if (mSliders[i]->getName() ==
-                    ParameterID[Parameter_DelayTime]) {
+                    MyParameterID[Parameter_DelayTime]) {
                     mSliders.remove(i);
                     mSliderTexts.remove(i);
                     mLabels.remove(i);
@@ -85,7 +85,7 @@ FXPanel::FXPanel(MyDelayPluginAudioProcessor* inProcessor)
         } else {
             for (int i = 0; i < mSliders.size(); i++) {
                 if (mSliders[i]->getName() ==
-                    ParameterID[Parameter_DelayTime]) {
+                    MyParameterID[Parameter_DelayTime]) {
                     mSliders.remove(i);
                     mBeatSliderBox.reset();
                     mLabels.remove(i);
@@ -150,8 +150,8 @@ void FXPanel::drawSlider(int x,
     mSliderTexts.add(text);
     
     // Denote the default values
-    auto val = *(mProcessor->parameters.
-    getRawParameterValue(ParameterID[text->getParameterID()]));
+    auto val = (mProcessor->parameters.
+    getRawParameterValue(MyParameterID[text->getParameterID()]))->load();
     auto toggleState = mTimeSliderTypeButton->getToggleState();
     
     std::cout << "toggle state " << toggleState << std::endl;
@@ -163,19 +163,19 @@ void FXPanel::drawSlider(int x,
         val = NoteTypeValue[static_cast<int>(val * (NoteType_TotalNumNoteTypes - 1))]
                     / (mProcessor->currentPositionInfo.bpm);
         std::cout << "slider val = " << val << std::endl;
-        val = jlimit(0.05f, 2.0f, val);
+        val = jlimit<float>(0.05f, 2.0f, val);
         std::cout << "slider val = " << val << std::endl;
         String tempString = String(val, 2);
         text->setText(tempString + text->getUnit(), dontSendNotification);
         text->setJustificationType(Justification::centred);
         
-        val = jmap(val, 0.05f, 2.0f, 0.f, 1.f);
+        val = jmap<float>(val, 0.05f, 2.0f, 0.f, 1.f);
         std::cout << "slider val = " << val << std::endl;
         slider->setValue(val);
     }
     else
     {
-        val = jmap(val, text->getMinRange(), text->getMaxRange());
+        val = jmap<float>(val, text->getMinRange(), text->getMaxRange());
         String tempString = (text->getParameterID() == Parameter_DelayTime) ?
         String(val, 2) : String(static_cast<int>(val));
         text->setText(tempString + text->getUnit(), dontSendNotification);
@@ -224,8 +224,8 @@ void FXPanel::drawSlider(int x,
     // Set up the right text and the values on each slider text and slider when the user
     // changes the sliders
     slider->onValueChange = [this, text]{
-        auto val = *(mProcessor->parameters.
-        getRawParameterValue(ParameterID[text->getParameterID()]));
+        auto val = (mProcessor->parameters.
+        getRawParameterValue(MyParameterID[text->getParameterID()]))->load();
         val = jmap(val,
                    text->getMinRange(),
                    text->getMaxRange());
@@ -273,8 +273,8 @@ void FXPanel::drawIntervalSlider(int x, int y, int parameterIndex, float minRang
     addAndMakeVisible(mBeatSliderBox.get());
     
     // Denote the default values
-    auto val = *(mProcessor->parameters.
-    getRawParameterValue(ParameterID[parameterIndex]));
+    auto val = (mProcessor->parameters.
+    getRawParameterValue(MyParameterID[parameterIndex]))->load();
     auto toggleState = mTimeSliderTypeButton->getToggleState();
     
     std::cout << "toggle state " << toggleState << std::endl;
@@ -308,8 +308,8 @@ void FXPanel::drawIntervalSlider(int x, int y, int parameterIndex, float minRang
     // Set up the right text and the values on each slider text and slider when the user
     // changes the sliders
     slider->onValueChange = [this, parameterIndex]{
-        auto val = *(mProcessor->parameters.
-        getRawParameterValue(ParameterID[parameterIndex]));
+        auto val = (mProcessor->parameters.
+        getRawParameterValue(MyParameterID[parameterIndex]))->load();
         mBeatSliderBox->setSelectedItemIndex(val * (NoteType_TotalNumNoteTypes - 1));
     };
     

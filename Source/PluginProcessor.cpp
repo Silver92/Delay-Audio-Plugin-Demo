@@ -160,18 +160,18 @@ void MyDelayPluginAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
     // Alternatively, you can process the samples with the channels
     // interleaved by keeping the same state.
     
-    playHead = this->getPlayHead();
+    auto playHead = this->getPlayHead();
     playHead->getCurrentPosition(currentPositionInfo);
     
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
         auto* channelData = buffer.getWritePointer (channel);
-        auto inputGain = *parameters.getRawParameterValue(ParameterID[Parameter_InputGain]);
-        auto delayTime = *parameters.getRawParameterValue(ParameterID[Parameter_DelayTime]);
-        auto delayType = *parameters.getRawParameterValue(ParameterID[Parameter_TimeSliderType]);
-        auto delayFeedback = *parameters.getRawParameterValue(ParameterID[Parameter_DelayFeedback]);
-        auto delayDryWet = *parameters.getRawParameterValue(ParameterID[Parameter_DelayDryWet]);
-        auto outputGain = *parameters.getRawParameterValue(ParameterID[Parameter_OutputGain]);
+        auto inputGain = parameters.getRawParameterValue(MyParameterID[Parameter_InputGain])->load();
+        auto delayTime = parameters.getRawParameterValue(MyParameterID[Parameter_DelayTime])->load();
+        auto delayType = parameters.getRawParameterValue(MyParameterID[Parameter_TimeSliderType])->load();
+        auto delayFeedback = parameters.getRawParameterValue(MyParameterID[Parameter_DelayFeedback])->load();
+        auto delayDryWet = parameters.getRawParameterValue(MyParameterID[Parameter_DelayDryWet])->load();
+        auto outputGain = parameters.getRawParameterValue(MyParameterID[Parameter_OutputGain])->load();
         
         mInputGain[channel]->process(channelData,
                                      inputGain,
@@ -185,10 +185,10 @@ void MyDelayPluginAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
         if (delayType) {
             delayTime = NoteTypeValue[static_cast<int>(delayTime * (NoteType_TotalNumNoteTypes - 1))]
                         / currentPositionInfo.bpm;
-            delayTime = jlimit(0.05f, 2.0f, delayTime);
+            delayTime = jlimit<float>(0.05f, 2.0f, delayTime);
         }
         else {
-            delayTime = jmap(delayTime, 0.0f, 1.0f, 0.05f, 2.0f);
+            delayTime = jmap<float>(delayTime, 0.0f, 1.0f, 0.05f, 2.0f);
         }
         
         mDelay[channel]->process(channelData,
@@ -295,8 +295,8 @@ AudioProcessorValueTreeState::ParameterLayout MyDelayPluginAudioProcessor::creat
     using mParameter = AudioProcessorValueTreeState::Parameter;
     
     for (int i = 0; i < Parameter_TotalNumParameters; i++){
-        params.push_back(std::make_unique<mParameter>(ParameterID[i],                           /**Parameter ID*/
-                                                      ParameterID[i],                           /**Parameter Name*/
+        params.push_back(std::make_unique<mParameter>(MyParameterID[i],                           /**Parameter ID*/
+                                                      MyParameterID[i],                           /**Parameter Name*/
                                                       ParameterLabel[i],                        /**labelText*/
                                                       NormalisableRange<float>(0.0f, 1.0f),
                                                       ParameterDefaultVal[i],

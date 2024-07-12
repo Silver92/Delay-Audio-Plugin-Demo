@@ -65,9 +65,9 @@ void GainPanel::initSliderWithParameterID(MyDelayPluginAudioProcessor* inProcess
     addAndMakeVisible(mSliderText.get());
     
     //=================================================================================
-    auto val = *(mProcessor->parameters.
-    getRawParameterValue(ParameterID[mSliderText->getParameterID()]));
-    val = jmap(val, mSliderText->getMinRange(), mSliderText->getMaxRange());
+    auto val = (mProcessor->parameters.
+    getRawParameterValue(MyParameterID[mSliderText->getParameterID()]))->load();
+    val = jmap<float>(val, mSliderText->getMinRange(), mSliderText->getMaxRange());
     mSliderText->setText(String(val, 1) + mSliderText->getUnit(), dontSendNotification);
     mSliderText->setJustificationType(Justification::centred);
     
@@ -110,9 +110,9 @@ void GainPanel::initSliderWithParameterID(MyDelayPluginAudioProcessor* inProcess
     
     //=================================================================================
     mGainSlider->onValueChange = [this]{
-        auto val = *(mProcessor->parameters.
-        getRawParameterValue(ParameterID[mSliderText->getParameterID()]));
-        val = jmap(val, mSliderText->getMinRange(), mSliderText->getMaxRange());
+        auto val = (mProcessor->parameters.
+        getRawParameterValue(MyParameterID[mSliderText->getParameterID()]))->load();
+        val = jmap<float>(val, mSliderText->getMinRange(), mSliderText->getMaxRange());
         mSliderText->setText(String(val, 1) + mSliderText->getUnit(), dontSendNotification);
         mSliderText->setJustificationType(Justification::centred);
     };

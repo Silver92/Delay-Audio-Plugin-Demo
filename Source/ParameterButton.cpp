@@ -14,7 +14,7 @@ ParameterButton::ParameterButton(AudioProcessorValueTreeState& stateControl, int
 :   juce::TextButton(ParameterLabel[parameterName])
 {
     mAttachment.reset(new AudioProcessorValueTreeState::ButtonAttachment(stateControl,
-                                                                         ParameterID[parameterName],
+                                                                         MyParameterID[parameterName],
                                                                          *this));
 }
 
