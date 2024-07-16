@@ -1,6 +1,6 @@
 # Delay Audio Plugin Demo
 
-[![Operation Introduction](https://img.youtube.com/vi/MWt1lQPuHfc/0.jpg)](https://www.youtube.com/watch?v=MWt1lQPuHfc)
+[![Operation Introduction](http://i.ytimg.com/vi/MWt1lQPuHfc/hqdefault.jpg)](https://www.youtube.com/watch?v=MWt1lQPuHfc)
 
 An audio delay effect plugin is demostrated to improve the music and sound design experience. The delay effect is used to simulate the echo in the common space and enchance the sound effect. 5 sliders and 1 button are designed in this plugin:
 
