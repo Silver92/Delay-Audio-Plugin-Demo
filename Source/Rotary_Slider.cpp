@@ -20,7 +20,7 @@ RotarySlider::RotarySlider(AudioProcessorValueTreeState& stateToControl,
     setRange(0.0f, 1.0f, 0.001f);
     mAttachment.reset(
     new AudioProcessorValueTreeState::SliderAttachment(stateToControl,
-                                                       ParameterID[parameterName],
+                                                       MyParameterID[parameterName],
                                                        *this));
 }
 

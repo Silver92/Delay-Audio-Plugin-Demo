@@ -21,7 +21,7 @@ enum Parameter
     Parameter_TotalNumParameters,
 };
 
-static String ParameterID [Parameter_TotalNumParameters] =
+static String MyParameterID [Parameter_TotalNumParameters] =
 {
     "InputGain",
     "Time",

@@ -80,10 +80,7 @@ private:
     std::unique_ptr<Delay> mDelay[2];
     std::unique_ptr<PresetManager> mPresetManager;
     
-    int inputChannels = getTotalNumInputChannels();
-    
-    AudioPlayHead* playHead;
-    
+    int inputChannels = getTotalNumInputChannels();    
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MyDelayPluginAudioProcessor)
 };
