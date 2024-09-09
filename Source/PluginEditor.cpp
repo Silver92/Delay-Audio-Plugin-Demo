@@ -25,9 +25,9 @@ MyDelayPluginAudioProcessorEditor::MyDelayPluginAudioProcessorEditor (MyDelayPlu
     mMainPanel.reset(new MainPanel(&processor));
     addAndMakeVisible(mMainPanel.get());
     
-    mLookAndFeel.reset(new MyLookAndFeel());
-    setLookAndFeel(mLookAndFeel.get());
-    LookAndFeel::setDefaultLookAndFeel(mLookAndFeel.get());
+    //mLookAndFeel.reset(new MyLookAndFeel());
+    //setLookAndFeel(mLookAndFeel.get());
+    //LookAndFeel::setDefaultLookAndFeel(mLookAndFeel.get());
 }
 
 MyDelayPluginAudioProcessorEditor::~MyDelayPluginAudioProcessorEditor()

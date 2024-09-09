@@ -10,11 +10,12 @@
 
 #pragma once
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include <juce_audio_processors/juce_audio_processors.h>
 #include "Gain.h"
 #include "Delay.h"
 #include "ParameterList.h"
 #include "Preset_Manager.h"
+using namespace juce;
 
 //==============================================================================
 /**
