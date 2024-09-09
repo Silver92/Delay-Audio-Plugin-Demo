@@ -30,38 +30,39 @@ const Font font_2(22.00f, Font::bold);
 const Font font_3(48.00f, Font::bold);
 
 class MyLookAndFeel
-:   public LookAndFeel_V4
+	: public LookAndFeel_V4
 {
 public:
-    MyLookAndFeel()
-    {
-        // Set button colours
-        setColour(TextButton::buttonColourId, Colour_1);
-        setColour(TextButton::textColourOnId, Colour_1);
-        setColour(TextButton::textColourOffId, Colour_1);
-    }
+
+	MyLookAndFeel()
+	{
+		// Set button colours
+		setColour(TextButton::buttonColourId, Colour_1);
+		setColour(TextButton::textColourOnId, Colour_1);
+		setColour(TextButton::textColourOffId, Colour_1);
+	}
     
     ~MyLookAndFeel() {};
-    
-    /** comboBoxes **/
-//    Font getLabelFont(Label& label) override
-//    {
-//        return font_1;
-//    }
-    
-    void drawPopupMenuItem (Graphics& g, const Rectangle<int>& area,
-                            bool isSeparator, bool isActive, bool isHighlighted, bool isTicked, bool hasSubMenu,
-                            const String& text, const String& shortcutKeyText,
-                            const Drawable* icon, const Colour* textColour) override
-    {
-        juce::Rectangle<int> r (area);
-        
-        Colour fillColour = isHighlighted ? Colour_5 : Colour_4;
-        g.setColour(fillColour);
-        g.fillRect(r.getX(), r.getY(), r.getWidth(), r.getHeight() - 1);
-        
-        Colour myTextColour = isTicked ? Colour_7 : Colour_1;
-        g.setColour(myTextColour);
+
+	/** comboBoxes **/
+    //  Font getLabelFont(Label& label) override
+    //  {
+    //      return font_1;
+    //  }
+
+	void drawPopupMenuItem(Graphics& g, const Rectangle<int>& area,
+		bool isSeparator, bool isActive, bool isHighlighted, bool isTicked, bool hasSubMenu,
+		const String& text, const String& shortcutKeyText,
+		const Drawable* icon, const Colour* textColour) override
+	{
+		juce::Rectangle<int> r(area);
+
+		Colour fillColour = isHighlighted ? Colour_5 : Colour_4;
+		g.setColour(fillColour);
+		g.fillRect(r.getX(), r.getY(), r.getWidth(), r.getHeight() - 1);
+
+		Colour myTextColour = isTicked ? Colour_7 : Colour_1;
+		g.setColour(myTextColour);
         g.setFont(font_1);
         
         r.setLeft(10);
@@ -93,10 +94,10 @@ public:
     }
     
     /** buttons **/
-    Font getTextButtonFont (TextButton&, int buttonHeight) override
-    {
-        return font_1;
-    }
+    //Font getTextButtonFont (TextButton&, int buttonHeight) override
+    //{
+    //    return font_1;
+    //}
     
     void drawButtonBackground (Graphics& g, Button& button, const Colour& backgroundColour, bool shouldDrawButtonAsHighlighted, bool shouldDrawButtonAsDown) override
     {
@@ -116,8 +117,5 @@ public:
         g.setColour(fillColour);
         g.fillRoundedRectangle(bounds.reduced(1), cornerSize);
     }
-    
-private:
-    
-    Image mSliderImage;
+
 };
