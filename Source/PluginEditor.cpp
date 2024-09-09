@@ -17,6 +17,10 @@
 MyDelayPluginAudioProcessorEditor::MyDelayPluginAudioProcessorEditor (MyDelayPluginAudioProcessor& p)
     : AudioProcessorEditor (&p), processor (p)
 {
+    mLookAndFeel = std::make_unique<MyLookAndFeel>();
+    setLookAndFeel(mLookAndFeel.get());
+    LookAndFeel::setDefaultLookAndFeel(mLookAndFeel.get());
+
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
     setSize (MAIN_PANEL_WIDTH,
@@ -25,9 +29,6 @@ MyDelayPluginAudioProcessorEditor::MyDelayPluginAudioProcessorEditor (MyDelayPlu
     mMainPanel.reset(new MainPanel(&processor));
     addAndMakeVisible(mMainPanel.get());
     
-    mLookAndFeel.reset(new MyLookAndFeel());
-    setLookAndFeel(mLookAndFeel.get());
-    LookAndFeel::setDefaultLookAndFeel(mLookAndFeel.get());
 }
 
 MyDelayPluginAudioProcessorEditor::~MyDelayPluginAudioProcessorEditor()

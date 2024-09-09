@@ -27,3 +27,25 @@ As the plugin is switched to the beat mode, the knob of the time becomes descret
 [![Time Beat Conversion](https://img.youtube.com/vi/AIrypINn6Zs/maxresdefault.jpg)](https://www.youtube.com/watch?v=AIrypINn6Zs)
 
 A practical feature deserved to mention is the Time/Beat Switch feature. The Time/Beat mode button provides the designer an easy way to test the delay time they want and quickly align the time to the beat by a simple click. The button saves the time to calculate the beat when the delay sound needs to follow some rhythm patterns. The users can also create some special rhythm patterns with the delay plugin, which creates some special sound effects patterns especially in some rhythm samples such as the drum beats.
+
+Building Projects
+==================
+
+The project is built with CMake. Make sure to have the latest version of CMake installed before building the project.
+
+Visual Studio
+-------------
+
+The project's default generator is Visual Studio 17 2022. JUCE framework is included as a submodule. To build the project, the JUCE framework must be updated ahead with the following command:
+
+```
+git submodule update --remote --merge JUCE
+```
+
+After the submodule update finished, the following commands could be executed to build the project.
+
+```
+cd /current/project/path
+cmake -B Builds/
+cmake --build Builds/
+```
