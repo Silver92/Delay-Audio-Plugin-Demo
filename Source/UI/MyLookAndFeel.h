@@ -25,12 +25,12 @@ const Colour Colour_7 = Colour(125, 125, 125);
 //const Font font_2 ("Helvetica Neue", 22.00f, Font::bold);
 //const Font font_3 ("Helvetica Neue", 48.00f, Font::bold);
 
-const Font font_1(12.00f, Font::bold);
+const Font font_1(15.00f, Font::bold);
 const Font font_2(22.00f, Font::bold);
 const Font font_3(48.00f, Font::bold);
 
 class MyLookAndFeel
-	: public LookAndFeel_V4
+	: public juce::LookAndFeel_V4
 {
 public:
 
@@ -45,10 +45,10 @@ public:
     ~MyLookAndFeel() {};
 
 	/** comboBoxes **/
-    //  Font getLabelFont(Label& label) override
-    //  {
-    //      return font_1;
-    //  }
+    Font getLabelFont(Label& label) override
+    {
+        return { font_1.getHeight(), font_1.bold };
+    }
 
 	void drawPopupMenuItem(Graphics& g, const Rectangle<int>& area,
 		bool isSeparator, bool isActive, bool isHighlighted, bool isTicked, bool hasSubMenu,
@@ -63,7 +63,7 @@ public:
 
 		Colour myTextColour = isTicked ? Colour_7 : Colour_1;
 		g.setColour(myTextColour);
-        g.setFont(font_1);
+        g.setFont(juce::Font(font_1.getHeight(), font_1.bold));
         
         r.setLeft(10);
         r.setY(1);
@@ -94,12 +94,13 @@ public:
     }
     
     /** buttons **/
-    //Font getTextButtonFont (TextButton&, int buttonHeight) override
-    //{
-    //    return font_1;
-    //}
+    Font getTextButtonFont (TextButton&, int buttonHeight) override
+    {
+        return { font_1.getHeight(), font_1.bold };
+    }
     
-    void drawButtonBackground (Graphics& g, Button& button, const Colour& backgroundColour, bool shouldDrawButtonAsHighlighted, bool shouldDrawButtonAsDown) override
+    void drawButtonBackground (Graphics& g, Button& button, const Colour& backgroundColour, 
+        bool shouldDrawButtonAsHighlighted, bool shouldDrawButtonAsDown) override
     {
         Colour fillColour;
         
